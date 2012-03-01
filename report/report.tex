@@ -69,12 +69,12 @@ x_{1}(t) = \sum_{i} C_{i} \, cos(\omega_{i} t + \theta_{i})
 x_{1}(t) & = & 2 \, sin(2 t) \, cos(11 t) + 5 \, cos^2 \, (8t) \\
 	 & = & sin(2 t + 11 t) + sin(2 t - 11 t) + 5 \, cos^2 \, (8t) \\
 	 & = & sin(13 t) + sin(- 9 t) + 5 \, cos^2 \, (8t) \\
-	 & = & - cos(13 t + \frac{\pi}{2}) - cos(- 9 t + \frac{\pi}{2}) + 5 \, cos^2 \, (8t) \\
-	 & = & cos(13 t + \frac{3 \pi}{2}) + cos(- 9 t + \frac{3 \pi}{2}) + 5 \, cos^2 \, (8t) \\
-	 & = & cos(13 t + \frac{3 \pi}{2}) + cos(9 t + \frac{\pi}{2}) + 5 \, cos^2 \, (8t) \\
-	 & = & cos(13 t + \frac{3 \pi}{2}) + cos(9 t + \frac{\pi}{2}) + 5 \, \frac{1 + cos(2 * 8 t)}{2} \\
-	 & = & cos(13 t + \frac{3 \pi}{2}) + cos(9 t + \frac{\pi}{2}) + \frac{5}{2} \, cos(0) + \frac{5}{2} \, cos(16 t) \\
-	 & = & \frac{5}{2} \, cos(0) + cos(9 t + \frac{\pi}{2}) + cos(13 t + \frac{3 \pi}{2}) + \frac{5}{2} \, cos(16 t)
+	 & = & - cos\left(13 t + \frac{\pi}{2}\right) - cos\left(- 9 t + \frac{\pi}{2}\right) + 5 \, cos^2 \, (8t) \\
+	 & = & cos\left(13 t + \frac{3 \pi}{2}\right) + cos\left(- 9 t + \frac{3 \pi}{2}\right) + 5 \, cos^2 \, (8t) \\
+	 & = & cos\left(13 t + \frac{3 \pi}{2}\right) + cos\left(9 t + \frac{\pi}{2}\right) + 5 \, cos^2 \, (8t) \\
+	 & = & cos\left(13 t + \frac{3 \pi}{2}\right) + cos\left(9 t + \frac{\pi}{2}\right) + 5 \left(\frac{1 + cos(2 * 8 t)}{2}\right) \\
+	 & = & cos\left(13 t + \frac{3 \pi}{2}\right) + cos\left(9 t + \frac{\pi}{2}\right) + \frac{5}{2} \, cos(0) + \frac{5}{2} \, cos(16 t) \\
+	 & = & \frac{5}{2} \, cos(0) + cos\left(9 t + \frac{\pi}{2}\right) + cos\left(13 t + \frac{3 \pi}{2}\right) + \frac{5}{2} \, cos(16 t)
 \end{eqnarray}
 
 \subsubsection{Trigonometric identities}
@@ -109,7 +109,7 @@ cos^2(\theta) = \frac{1 + cos(2 \theta)}{2}
 \subsection{Exercise 1.2}
 Fazendo uma simples substituição de $t$ por $n \, T_{s}$ na expressão obtida na alínea anterior obtém-se:
 \begin{equation}
-	x_{1}[n] = \frac{5}{2} \, cos(0) + cos(9 \, n \, T_{s} + \frac{\pi}{2}) + cos(13 \, n \, T_{s} + \frac{3 \pi}{2}) + \frac{5}{2} \, cos(16 \, n \, T_{s})
+	x_{1}[n] = \frac{5}{2} \, cos(0) + cos\left(9 \, n \, T_{s} + \frac{\pi}{2}\right) + cos\left(13 \, n \, T_{s} + \frac{3 \pi}{2}\right) + \frac{5}{2} \, cos(16 \, n \, T_{s})
 \end{equation}
 
 % TODO
