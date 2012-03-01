@@ -19,8 +19,10 @@ t_t = linspace(-pi, pi, N_POINTS);
 x_t1 = 2 * sin(2 * t_t) .* cos(11 * t_t) + 5 .* cos(8 * t_t) .^ 2;
 x_t2 = 5/2 * cos(0) + cos(9 * t_t + pi/2) + cos(13 * t_t + 3*pi/2) + 5/2 * cos(16 * t_t);
 
+titl = 'Ex. 1.1: Original expression signal overlapped by the cosine sum expression signal';
+figure('Name', titl);
 plot(t_t, x_t1, 'b-', t_t, x_t2, 'r-.');
-title('Ex. 1.1: Original expression signal overlapped by the cosine sum expression signal');
+title(titl);
 
 %% Ex. 1.2.
 % x[n] = 5/2 * cos(0) + cos(9 * n * Ts + pi/2) + cos(13 * n * Ts + 3*pi/2) + 5/2 * cos(16 * n * Ts)
@@ -29,7 +31,7 @@ title('Ex. 1.1: Original expression signal overlapped by the cosine sum expressi
 N_POINTS = 500;
 Ts = 0.1;
 t_t = linspace(-pi, pi, N_POINTS);
-t_n = -pi:Ts:pi;
+t_n = -floor(((pi-(-pi))/Ts)/2):1:floor(((pi-(-pi))/Ts)/2);
 
 %%%
 % Signal calculation using matrixes (for GPU-accelerated operations)
@@ -40,13 +42,20 @@ t_n = -pi:Ts:pi;
 %%%
 
 x_t = 5/2 * cos(0) + cos(9 * t_t + pi/2) + cos(13 * t_t + 3*pi/2) + 5/2 * cos(16 * t_t);
-x_n = 5/2 * cos(0) + cos(9 * t_n + pi/2) + cos(13 * t_n + 3*pi/2) + 5/2 * cos(16 * t_n);
+x_n = 5/2 * cos(0) + cos(9 * t_n * Ts + pi/2) + cos(13 * t_n * Ts + 3*pi/2) + 5/2 * cos(16 * t_n * Ts);
 
-plot(t_t, x_t, 'b-', t_n, x_n, 'r*');
-title('Ex. 1.3: x(t) representation using 500 samples (blue); x[n] representation using Ts = 0.1s (red)');
+titl = sprintf('Ex. 1.3: x(t) representation using %d samples (blue); x[n] representation using Ts = %.1fs (red)', N_POINTS, Ts);
+figure('Name', titl);
+plot(t_t, x_t, 'b-', t_n * Ts, x_n, 'r*');
+title(titl);
 
 %% Ex.1.4.
-% --- TODO ---
+syms t;
+x_1 = 5/2 * cos(0) + cos(9 * t + pi/2) + cos(13 * t + 3*pi/2) + 5/2 * cos(16 * t);
+energy_t = int(x_1^2, t, -pi, pi); % assuming t is a real variable, abs() is redundant; therefore, it is removed, since it difficults the integral calculation
+fprintf('x_1(t) exact energy value for the [-π,π] is %s.\n', char(energy_t));
+
+% TODO % TODO % TODO % TODO % TODO %
 
 %% Ex.1.5.
 %%%
@@ -58,4 +67,4 @@ energy_n = 0;
 for i=1:length(x_n),
     energy_n = energy_n + abs(x_n(i))^2;
 end
-fprintf('The x[n] signal''s energy on the [-π,π] interval is %f.\n', energy_n);
+fprintf('x_1[n] signal''s energy for the [-π,π] interval is %f.\n', energy_n);
