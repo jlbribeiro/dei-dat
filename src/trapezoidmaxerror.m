@@ -1,4 +1,4 @@
-function [integral_val, step] = trapezoidenergy(f, a, b, max_error)
+function [integral_val, step] = trapezoidmaxerror(f, a, b, max_error)
 % Trapezoid Rule Integral Approximation
 %	The number of subintervals (trapezoids) is obtained using max_error,
 %	in order to calculate an integral approximation of f between a and b
@@ -22,7 +22,7 @@ m = max(fh_dx2(t));
 % guarantee a real square root.
 n = ceil(sqrt(abs((((b - a) ^ 3) / (12 * max_error)) * m)));
 
-f2h = matlabFunction(f^2);
+f2h = matlabFunction(f);
 
 [integral_val, step] = trapezoid(f2h, a, b, n);
 

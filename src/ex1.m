@@ -55,22 +55,33 @@ MAX_ERROR = 0.001;
 syms t;
 x_1 = 5/2 * cos(0) + cos(9 * t + pi/2) + cos(13 * t + 3*pi/2) + 5/2 * cos(16 * t);
 
+% Assuming t is a real variable, abs() is redundant; therefore, its removal
+% will provide the same result while being of faster computation, since it
+% difficults the integral calculation.
+% The lines commented below are also related with the abs function and its
+% integral.
+
+% x_1_energy = abs(x_1) ^ 2;
+x_1_energy = x_1 ^ 2;
+
+% warning('off','symbolic:sym:int:warnmsg1'); % suppress the "Warning: Explicit integral could not be found." message
 tic;
-energy_t = int(x_1^2, t, -pi, pi); % assuming t is a real variable, abs() is redundant; therefore, it is removed, since it difficults the integral calculation
+energy_t = double(int(x_1_energy, t, -pi, pi));
 time_t = toc;
+% warning('on','symbolic:sym:int:warnmsg1');
 fprintf('x_1(t) exact energy value for t ∈ [-π,π]:\n\tvalue: %s ≈ %f\n\texecution_time: %fs\n\n', char(energy_t), double(energy_t), time_t);
 
+% warning('off','symbolic:mupadmex:MuPADTextWarning'); % suppress the "Warning: Function 'dirac' is not verified to be a valid MATLAB function." message
 tic;
-[energy_trap, step_trap] = trapezoidenergy(x_1, -pi, pi, MAX_ERROR);
+[energy_trap, step_trap] = trapezoidmaxerror(x_1_energy, -pi, pi, MAX_ERROR);
 time_trap = toc;
-fprintf('x_1(t) approximated energy value for t ∈ [-π,π] using the Trapezoid Rule (maximal error of %.3f):\n\tvalue: %f\n\tnecessary step: %f\n\texecution time: %fs\n', MAX_ERROR, energy_trap, step_trap, time_trap);
+% warning('on', 'symbolic:mupadmex:MuPADTextWarning');
+fprintf('x_1(t) approximated energy value for t ∈ [-π,π] using the Trapezoid Rule (maximal error of %.3f):\n\tvalue: %f\n\tnecessary step: %f\n\texecution time: %fs\n\n', MAX_ERROR, energy_trap, step_trap, time_trap);
 
-% TODO % TODO % TODO % TODO % TODO %
 tic;
-[energy_simpson, step_simpson] = simpsonenergy(x_1, -pi, pi, MAX_ERROR);
+[energy_simpson, step_simpson] = simpsonmaxerror(x_1, -pi, pi, MAX_ERROR);
 time_simpson = toc;
 fprintf('x_1(t) approximated energy value for t ∈ [-π,π] using Simpson Rule (maximal error of %.3f):\n\tvalue: %f\n\tnecessary step: %f\n\texecution time: %fs\n', MAX_ERROR, energy_simpson, step_simpson, time_simpson);
-% TODO % TODO % TODO % TODO % TODO %
 
 %% Ex.1.5.
 %%%
