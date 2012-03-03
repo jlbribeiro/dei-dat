@@ -50,11 +50,26 @@ plot(t_t, x_t, 'b-', t_n * Ts, x_n, 'r*');
 title(titl);
 
 %% Ex.1.4.
+MAX_ERROR = 0.001;
+
 syms t;
 x_1 = 5/2 * cos(0) + cos(9 * t + pi/2) + cos(13 * t + 3*pi/2) + 5/2 * cos(16 * t);
-energy_t = int(x_1^2, t, -pi, pi); % assuming t is a real variable, abs() is redundant; therefore, it is removed, since it difficults the integral calculation
-fprintf('x_1(t) exact energy value for the [-π,π] is %s.\n', char(energy_t));
 
+tic;
+energy_t = int(x_1^2, t, -pi, pi); % assuming t is a real variable, abs() is redundant; therefore, it is removed, since it difficults the integral calculation
+time_t = toc;
+fprintf('x_1(t) exact energy value for t = [-π,π]:\n\tvalue: %s ≈ %f\n\texecution_time: %fs\n\n', char(energy_t), double(energy_t), time_t);
+
+tic;
+[energy_trap, step_trap] = trapezoidenergy(x_1, -pi, pi, MAX_ERROR);
+time_trap = toc;
+fprintf('x_1(t) approximated energy value for t = [-π,π] using the Trapezoid Rule (maximal error of %.3f):\n\tvalue: %f\n\tnecessary step: %f\n\texecution time: %fs\n', MAX_ERROR, energy_trap, step_trap, time_trap);
+
+% TODO % TODO % TODO % TODO % TODO %
+tic;
+[energy_simpson, step_simpson] = simpsonenergy(x_1, -pi, pi, MAX_ERROR);
+time_simpson = toc;
+fprintf('x_1(t) approximated energy value for t = [-π,π] using Simpson Rule (maximal error of %.3f):\n\tvalue: %f\n\tnecessary step: %f\n\texecution time: %fs\n', MAX_ERROR, energy_simpson, step_simpson, time_simpson);
 % TODO % TODO % TODO % TODO % TODO %
 
 %% Ex.1.5.
