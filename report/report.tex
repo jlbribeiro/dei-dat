@@ -26,6 +26,8 @@
 \usepackage{anysize}
 \usepackage{lscape}
 \usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{caption}
 %\usepackage[pdftex]{graphicx}
 %\usepackage[table]{xcolor}
 
@@ -106,11 +108,33 @@ cos^2(\theta) = \frac{1 + cos(2 \theta)}{2}
 \tag{8 to 9}
 \end{equation}
 
+\subsubsection{"Proof" of equality}
+\noindent De forma a verificar que nenhum erro havia sido cometido durante a transformação da equação do sinal, um gráfico com a representação segundo as duas fórmulas foi gerado. A fórmula original encontra-se representada a azul; a tracejado vermelho encontra-se sobreposta a representação segundo um somatório de co-senos, segundo a fórmula obtida em \emph{\nameref{eq:simplification}}.
+
+\begin{center}
+	\includegraphics[scale=0.45]{images/ex11.png}
+	\captionof{figure}{Original signal expression overlapped by the cosine sum signal expression, with $t \in [-\pi,\pi]$.}
+	\label{fig:ex11}
+\end{center}
+
+\noindent Como é possível observar na figura \ref{fig:ex11}, a sobreposição das representações é perfeita.
+
 \subsection{Exercise 1.2}
 Fazendo uma simples substituição de $t$ por $n \, T_{s}$ na expressão obtida na alínea anterior obtém-se:
 \begin{equation}
 	x_{1}[n] = \frac{5}{2} \, cos(0) + cos\left(9 \, n \, T_{s} + \frac{\pi}{2}\right) + cos\left(13 \, n \, T_{s} + \frac{3 \pi}{2}\right) + \frac{5}{2} \, cos(16 \, n \, T_{s})
 \end{equation}
+
+\subsection{Exercise 1.3}
+O gráfico seguinte representa o sinal $x_1{1}(t)$ (a azul), para $t \in [-\pi, \pi]$ (com 500 elementos), sobreposto com o sinal $x_1{1}[n]$ (a vermelho) no mesmo intervalo, com um período de amostragem $T_ {s} = 0.1s$.
+
+\begin{center}
+	\includegraphics[scale=0.45]{images/ex13.png}
+	\captionof{figure}{$x_1{1}(t)$ (blue), for $t \in [-\pi, \pi]$ (using 500 samples); $x_1{1}[n]$ (red) in the same interval, using $T_ {s} = 0.1s$.}
+	\label{fig:ex13}
+\end{center}
+
+\noindent Como é possível observar na figura \ref{fig:ex13}, algumas amostras obtidas em $x_1{1}[n]$ apresentam um ligeiro desvio quando comparadas com o traçado do sinal $x_1{1}[n]$. Após alguma análise (incluíndo a soma das diferenças), concluímos que esse desvio se deve exclusivamente à perda de precisão decimal durante a criação do \emph{array} de espaçamento linear utilizado para o cálculo de $x_{1}(t)$.
 
 % TODO
 

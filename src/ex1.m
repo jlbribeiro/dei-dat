@@ -19,7 +19,7 @@ t_t = linspace(-pi, pi, N_POINTS);
 x_t1 = 2 * sin(2 * t_t) .* cos(11 * t_t) + 5 .* cos(8 * t_t) .^ 2;
 x_t2 = 5/2 * cos(0) + cos(9 * t_t + pi/2) + cos(13 * t_t + 3*pi/2) + 5/2 * cos(16 * t_t);
 
-titl = 'Ex. 1.1: Original expression signal overlapped by the cosine sum expression signal';
+titl = 'Ex. 1.1: Original signal expression overlapped by the cosine sum signal expression, with t in [-pi,pi]';
 figure('Name', titl);
 plot(t_t, x_t1, 'b-', t_t, x_t2, 'r-.');
 title(titl);
@@ -44,7 +44,7 @@ t_n = -floor(((pi-(-pi))/Ts)/2):1:floor(((pi-(-pi))/Ts)/2);
 x_t = 5/2 * cos(0) + cos(9 * t_t + pi/2) + cos(13 * t_t + 3*pi/2) + 5/2 * cos(16 * t_t);
 x_n = 5/2 * cos(0) + cos(9 * t_n * Ts + pi/2) + cos(13 * t_n * Ts + 3*pi/2) + 5/2 * cos(16 * t_n * Ts);
 
-titl = sprintf('Ex. 1.3: x(t) representation using %d samples (blue); x[n] representation using Ts = %.1fs (red)', N_POINTS, Ts);
+titl = sprintf('Ex. 1.3: x(t) representation using %d samples (blue), with t in [-pi,pi]; x[n] representation using Ts = %.1fs (red) on the same interval', N_POINTS, Ts);
 figure('Name', titl);
 plot(t_t, x_t, 'b-', t_n * Ts, x_n, 'r*');
 title(titl);
@@ -58,18 +58,18 @@ x_1 = 5/2 * cos(0) + cos(9 * t + pi/2) + cos(13 * t + 3*pi/2) + 5/2 * cos(16 * t
 tic;
 energy_t = int(x_1^2, t, -pi, pi); % assuming t is a real variable, abs() is redundant; therefore, it is removed, since it difficults the integral calculation
 time_t = toc;
-fprintf('x_1(t) exact energy value for t = [-π,π]:\n\tvalue: %s ≈ %f\n\texecution_time: %fs\n\n', char(energy_t), double(energy_t), time_t);
+fprintf('x_1(t) exact energy value for t ∈ [-π,π]:\n\tvalue: %s ≈ %f\n\texecution_time: %fs\n\n', char(energy_t), double(energy_t), time_t);
 
 tic;
 [energy_trap, step_trap] = trapezoidenergy(x_1, -pi, pi, MAX_ERROR);
 time_trap = toc;
-fprintf('x_1(t) approximated energy value for t = [-π,π] using the Trapezoid Rule (maximal error of %.3f):\n\tvalue: %f\n\tnecessary step: %f\n\texecution time: %fs\n', MAX_ERROR, energy_trap, step_trap, time_trap);
+fprintf('x_1(t) approximated energy value for t ∈ [-π,π] using the Trapezoid Rule (maximal error of %.3f):\n\tvalue: %f\n\tnecessary step: %f\n\texecution time: %fs\n', MAX_ERROR, energy_trap, step_trap, time_trap);
 
 % TODO % TODO % TODO % TODO % TODO %
 tic;
 [energy_simpson, step_simpson] = simpsonenergy(x_1, -pi, pi, MAX_ERROR);
 time_simpson = toc;
-fprintf('x_1(t) approximated energy value for t = [-π,π] using Simpson Rule (maximal error of %.3f):\n\tvalue: %f\n\tnecessary step: %f\n\texecution time: %fs\n', MAX_ERROR, energy_simpson, step_simpson, time_simpson);
+fprintf('x_1(t) approximated energy value for t ∈ [-π,π] using Simpson Rule (maximal error of %.3f):\n\tvalue: %f\n\tnecessary step: %f\n\texecution time: %fs\n', MAX_ERROR, energy_simpson, step_simpson, time_simpson);
 % TODO % TODO % TODO % TODO % TODO %
 
 %% Ex.1.5.
