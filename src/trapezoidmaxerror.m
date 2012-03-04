@@ -22,8 +22,8 @@ m = max(fh_dx2(t));
 % guarantee a real square root.
 n = ceil(sqrt(abs((((b - a) ^ 3) / (12 * max_error)) * m)));
 
-f2h = matlabFunction(f);
+fh = matlabFunction(f);
 
-[integral_val, step] = trapezoid(f2h, a, b, n);
+[integral_val, step] = trapezoid(fh, a, b, n);
 
 end

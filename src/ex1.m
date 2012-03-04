@@ -80,7 +80,7 @@ fprintf('x_1(t) approximated energy value for t ∈ [-π,π] using the Trapezoid
 
 % warning('off','symbolic:mupadmex:MuPADTextWarning'); % suppress the "Warning: Function 'dirac' is not verified to be a valid MATLAB function." message
 tic;
-[energy_simpson, step_simpson] = simpsonmaxerror(x_1, -pi, pi, MAX_ERROR);
+[energy_simpson, step_simpson] = simpsonmaxerror(x_1_energy, -pi, pi, MAX_ERROR);
 time_simpson = toc;
 % warning('on', 'symbolic:mupadmex:MuPADTextWarning');
 fprintf('x_1(t) approximated energy value for t ∈ [-π,π] using Simpson Rule (maximal error of %.3f):\n\tvalue: %.4f\n\tnecessary step: %f\n\texecution time: %fs\n', MAX_ERROR, energy_simpson, step_simpson, time_simpson);
