@@ -136,7 +136,47 @@ O gráfico seguinte representa o sinal $x_1{1}(t)$ (a azul), para $t \in [-\pi, 
 
 \noindent Como é possível observar na figura \ref{fig:ex13}, algumas amostras obtidas em $x_1{1}[n]$ apresentam um ligeiro desvio quando comparadas com o traçado do sinal $x_1{1}[n]$. Após alguma análise (incluíndo a soma das diferenças), concluímos que esse desvio se deve exclusivamente à perda de precisão decimal durante a criação do \emph{array} de espaçamento linear utilizado para o cálculo de $x_{1}(t)$.
 
-% TODO
+\subsection{Exercise 1.4}
+\noindent A energia de um sinal de tempo contínuo é dada, em $J$ (\emph{joules}), pelo integral do quadrado do seu módulo, isto é:
+\begin{equation}
+E = \int_{-\infty}^{\infty} |x(t)|^2 \, \mathrm{d} t
+\end{equation}
+
+\subsubsection{\texttt{MATLAB}'s \texttt{Symbolic Math Toolbox}}
+\noindent Utilizando as funções de cálculo matemático simbólico do \texttt{MATLAB}, foi possível obter o valor exacto da energia; neste caso, o valor é de $\frac{83 \, \pi}{4} J \approx 65.1880 J$.
+% TODO Missing time measure (optional).
+
+\subsubsection{Trapezoidal Rule}
+\noindent A \emph{Regra do Trapézio} é uma técnica de integração numérica que aproxima um integral calculando a soma da área dos trapézios formados por pontos da função. A aproximação do integral segundo esta regra considerando $N$ intervalos igualmente espaçados é:
+\begin{equation}
+\int_{a}^{b} f(x) \, \mathrm{d} x \approx \frac{b-a}{2N} (f(x_{1}) + 2 f(x_{2}) + 2 f(x_{3}) + ... + 2 f(x_{N}) + f(x_{N+1}))
+\end{equation}
+
+\noindent Como no enunciado nos é pedida uma aproximação com erro inferior a 0.001, devemos calcular o número de intervalos de forma a garantir essa condição. Existe um número $\xi$ entre $a$ e $b$ em que o erro obtido é dado pela fórmula:
+\begin{equation}
+error = -\frac{(b-a)^3}{12 \, N^2} \, f''(\xi)
+\end{equation}
+
+\noindent Como é evidente pela fórmula, o erro em módulo\footnote{O valor de $error$ assume valor negativo ou positivo consoante o integral seja sub ou sobrestimado, respectivamente.} evolui proporcionalmente a $f''$. Como tal, é possível concluir que, para que seja possível calcular $N$ de forma a garantir que $error$ seja o erro máximo, será necessário calcular o valor de $\xi$ para o qual $f''$ assume o seu valor máximo. Doravante (por motivos de simplificação), iremos assumir que:
+\begin{equation}
+M = \max(f'')
+\end{equation}
+
+\noindent Depois de encontrado $M$, e colocando a fórmula em ordem a $N$, obtém-se que:
+
+\begin{equation}
+N = \left\lceil \sqrt{\left| \frac{(b-a)^3}{12 \, max\_error} \, M \right|} \, \right\rceil
+\end{equation}
+
+O cálculo da energia do sinal $x_{1}(t)$ efectuado com a Regra do Trapézio obteve como resultado o valor de 65.1880, utilizando um step de 0.000499s.
+% TODO Verify the step value.
+% TODO Missing time measure.
+
+\subsubsection{Simpson's Rule}
+% TODO!!!
+
+\subsection{Exercice 1.5}
+% TODO!!!
 
 \section{Exercise 2}
 \subsection{Exercise 2.1}

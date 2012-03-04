@@ -10,11 +10,11 @@ function [integral_val, step] = trapezoidmaxerror(f, a, b, max_error)
 f_dx2 = diff(f, 2);
 fh_dx2 = matlabFunction(f_dx2); % MATLAB function handler conversion
 
-t = a:0.0001:b;
+t = linspace(a,b, 50000);
 
 % Find the maximum value for the second order derivative of f;
 % this guarantees the max_error constraint for the number of intervals.
-m = max(fh_dx2(t)); 
+m = max(fh_dx2(t));
 
 % The number of intervals is calculated using the error estimate formula:
 % error = - ((b - a) ^ 3) / (12 * N ^ 2) * f''(ξ), for some ξ between a and
