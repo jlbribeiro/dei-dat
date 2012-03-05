@@ -1,12 +1,12 @@
 % Ex. 1.
-G = 25;
-A1 = 2 * mod(G, 2);       % => A1 = 2
-A2 = 3 * mod(G + 1, 2);   % => A2 = 0
-A3 = 5 * mod(G, 2);		% => A3 = 5
-A4 = 4 * mod(G + 1, 2);	% => A4 = 0
-Wa = mod(G, 5) + 2;		% => Wa = 2
-Wb = mod(G, 7) + 7;		% => Wb = 11
-Wc = mod(G, 9) + 1;		% => Wc = 8
+% G = 25;
+% A1 = 2 * mod(G, 2);       % => A1 = 2
+% A2 = 3 * mod(G + 1, 2);   % => A2 = 0
+% A3 = 5 * mod(G, 2);		% => A3 = 5
+% A4 = 4 * mod(G + 1, 2);	% => A4 = 0
+% Wa = mod(G, 5) + 2;		% => Wa = 2
+% Wb = mod(G, 7) + 7;		% => Wb = 11
+% Wc = mod(G, 9) + 1;		% => Wc = 8
 
 % x(t) = A1 * sin(Wa * t) * cos(Wb * t) + A2 * cos(Wa * t) * sin(Wb * t) + A3 * cos(Wc * t)^2 + A4 * sin(Wc * t)^2
 % =>
