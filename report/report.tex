@@ -28,6 +28,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{caption}
+\usepackage{amssymb}
 %\usepackage[pdftex]{graphicx}
 %\usepackage[table]{xcolor}
 
@@ -112,7 +113,7 @@ cos^2(\theta) = \frac{1 + cos(2 \theta)}{2}
 \noindent De forma a verificar que nenhum erro havia sido cometido durante a transformação da equação do sinal, um gráfico com a representação segundo as duas fórmulas foi gerado. A fórmula original encontra-se representada a azul; a tracejado vermelho encontra-se sobreposta a representação segundo um somatório de co-senos, segundo a fórmula obtida em \emph{\nameref{eq:simplification}}.
 
 \begin{center}
-	\includegraphics[scale=0.45]{images/ex11.png}
+	\includegraphics[scale=0.75]{images/ex11.png}
 	\captionof{figure}{Original signal expression overlapped by the cosine sum signal expression, with $t \in [-\pi,\pi]$.}
 	\label{fig:ex11}
 \end{center}
@@ -149,36 +150,60 @@ E = \int_{-\infty}^{\infty} |x(t)|^2 \, \mathrm{d} t
 \subsubsection{Trapezoidal Rule}
 \noindent A \emph{Regra do Trapézio} é uma técnica de integração numérica que aproxima um integral calculando a soma da área dos trapézios formados por pontos da função. A aproximação do integral segundo esta regra considerando $N$ intervalos igualmente espaçados é:
 \begin{equation}
-\int_{a}^{b} f(x) \, \mathrm{d} x \approx \frac{b-a}{2N} (f(x_{1}) + 2 f(x_{2}) + 2 f(x_{3}) + ... + 2 f(x_{N}) + f(x_{N+1}))
+\int_{a}^{b} f(x) \, \mathrm{d} x \approx \frac{b-a}{2 \, N} (f(x_{1}) + 2 f(x_{2}) + 2 f(x_{3}) + ... + 2 f(x_{N}) + f(x_{N+1}))
 \end{equation}
 
-\noindent Como no enunciado nos é pedida uma aproximação com erro inferior a 0.001, devemos calcular o número de intervalos de forma a garantir essa condição. Existe um número $\xi$ entre $a$ e $b$ em que o erro obtido é dado pela fórmula:
+\noindent Como no enunciado nos é pedida uma aproximação com erro inferior a 0.001, devemos calcular o número de intervalos de forma a garantir essa condição. Existe um número $\xi$ entre $a$ e $b$ em que o erro obtido é dado pela fórmula\footnote{Fórmula do erro da aproximação do integral pela Regra do Trapézio deduzida por Atkinson em \emph{An Introduction to Numerical Analysis}, 1989, John Wiley \& Sons, ISBN 978-0-471-50023-0.}.
 \begin{equation}
-error = -\frac{(b-a)^3}{12 \, N^2} \, f''(\xi)
+error = -\frac{(b - a)^3}{12 \, N^2} \, f''(\xi)
 \end{equation}
 
 \noindent Como é evidente pela fórmula, o erro em módulo\footnote{O valor de $error$ assume valor positivo ou negativo consoante o integral seja sub ou sobrestimado, respectivamente.} evolui proporcionalmente a $f''$. Como tal, é possível concluir que, para que seja possível calcular $N$ de forma a garantir que $error$ seja o erro máximo, será necessário calcular o valor de $\xi$ para o qual $f''$ assume o seu valor máximo. Doravante (por motivos de simplificação), iremos assumir que:
 \begin{equation}
-M = \max(f'')
+M \ge f''(\xi)
 \end{equation}
 
 \noindent Depois de encontrado $M$, e colocando a fórmula em ordem a $N$, obtém-se que:
 
 \begin{equation}
-N = \left\lceil \sqrt{\left| \frac{(b-a)^3}{12 \, max\_error} \, M \right|} \, \right\rceil
+N = \left\lceil \sqrt{\left| \frac{(b - a)^3}{12 \, max\_error} \, M \right|} \, \right\rceil
 \end{equation}
 
-O cálculo da energia do sinal $x_{1}(t)$ efectuado com a Regra do Trapézio obteve como resultado o valor de $65.1880 J$, utilizando um step de 0.000499s.
-% TODO Verify the step value.
-% TODO Missing time measure.
+O cálculo da energia do sinal $x_{1}(t)$ efectuado com a Regra do Trapézio obteve como resultado o valor de $65.1880 J$, utilizando um \emph{step} de $0.000499s$. O cálculo demorou, em média\footnote{Média de 30 iterações.}, $0.105080s$.
 
 \subsubsection{Simpson's Rule}
-% TODO!!!
-\noindent TODO
+\noindent A \emph{Regra de Simpson} é outra técnica de integração numérica que aproxima um integral calculando a soma da área das parábolas. A aproximação do integral segundo esta regra, considerando $N$ intervalos igualmente espaçados (onde $N \in 2 \, \mathbb{Z})$ é:
+\begin{equation}
+\int_{a}^{b} f(x) \, \mathrm{d} x \approx \frac{b-a}{3 \, N} [f(x_{1}) + 4 f(x_{2}) + 2 f(x_{3}) + 4 f(x_{4}) + ... + 2 f(x_{N-2}) + 4 f(x_{N-1}) + f(x_{n})]
+\end{equation}
 
-\subsection{Exercice 1.5}
-% TODO!!!
-\noindent TODO
+\noindent Como no enunciado nos é pedida uma aproximação com erro inferior a 0.001, devemos calcular o número de intervalos de forma a garantir essa condição. Existe um número $\xi$ entre $a$ e $b$ em que o erro obtido é dado pela fórmula:
+\begin{equation}
+error = \frac{(b-a)^5}{180 \, N} \, f^{(IV)} (\xi)
+\end{equation}
+
+\noindent Como é evidente pela fórmula, o erro evolui proporcionalmente a $f^{IV}$. Como tal, é possível concluir que, para que seja possível calcular $N$ de forma a garantir que $error$ seja o erro máximo, será necessário calcular o valor de $\xi$ para o qual $f^{IV}$ assume o seu valor máximo. Iremos assumir que: 
+\begin{equation}
+M \ge f^{(IV)}
+\end{equation}
+
+Depois de obter o M, podemos colocar a fórmula em ordem N, obtém-se\footnote{Deverá somar-se 1 a $N$ caso $N$ seja ímpar, de forma a garantir que $N \in 2 \mathbb{Z}.$}:
+\begin{equation}
+N = \left\lceil \sqrt[4]{\left| \frac{(b - a)^5}{180 \, max\_error} \, M \right|} \right\rceil
+\end{equation}
+
+O cálculo da energia do sinal $x_{1}(t)$ efectuado com a Regra de Simpson obteve como resultado o valor de $65.1880J$, utilizando um \emph{step} de $0.008118s$. O cálculo demorou, em média\footnote{Média de 30 iterações.}, $0.116167s$.
+
+\subsection{Exercise 1.5}
+\noindent O cálculo da energia de um sinal discreto é dado pela fórmula:
+\begin{equation}
+E = \sum_{n = -\infty}^{\infty} | x[n] |^2
+\end{equation}
+
+Como tal, para calcular a energia de um sinal $x[n]$ para $n$ correspondente ao intervalo $[a, b]$, basta calcular o somatório de todos os valores do sinal no intervalo $n \in \left[ sgn\left(\frac{a}{T_{s}}\right) \, \left\lfloor \left| \frac{a}{T_{s}} \right| \right\rfloor, sgn\left(\frac{b}{T_{s}}\right) \, \left\lfloor \left| \frac{b}{T_{s}} \right| \right\rfloor \right]$\footnote{Esta fórmula garante que os valores do intervalo (que é $\subset \mathbb{Z}$), quando multiplicados por $T_{s}$, correspondem a valores contidos no intervalo original.}, onde $T_{s}$ é o período de amostragem.
+
+\noindent Após a substituição no cálculo do intervalo, obtém-se que $n$ pertence ao intervalo $[-31, 31]$. O valor da energia de $x_1[n]$ obtido para $n \in [-31, 31]$ é de aproximadamente $656.6213J$.
+\clearpage
 
 \section{Exercise 2}
 \subsection{Exercise 2.1}
@@ -193,25 +218,5 @@ O cálculo da energia do sinal $x_{1}(t)$ efectuado com a Regra do Trapézio obt
 
 % ...
 
-
-\section{Exercise 4}
-\subsection{Exercise 4.1}
-\indent \indent 
-
-% ...
-
-
-\section{Exercise 5}
-\subsection{Exercise 5.1}
-\indent \indent 
-
-% ...
-
-
-\section{Exercise 6}
-\subsection{Exercise 6.1}
-\indent \indent 
-
-% ...
 
 \end{document}

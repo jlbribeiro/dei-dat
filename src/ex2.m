@@ -29,11 +29,11 @@ y3 = @(n) x(n - 2) .* x(n - 3);
 y4 = @(n) (n - 2) .* x(n - 3);
 
 figure('Name', 'Ex. 2.1: x[n], y1[n], y2[n], y3[n] and y4[n], for n in [-50, 50]');
-subplot(5,1,1), plot(n, x(n)), title('Ex. 2.1: x[n] signal, for n in [-50, 50]');
-subplot(5,1,2), plot(n, y1(n)), title('Ex. 2.1: y1[n] signal, for n in [-50, 50]');
-subplot(5,1,3), plot(n, y2(n)), title('Ex. 2.1: y2[n] signal, for n in [-50, 50]');
-subplot(5,1,4), plot(n, y3(n)), title('Ex. 2.1: y3[n] signal, for n in [-50, 50]');
-subplot(5,1,5), plot(n, y4(n)), title('Ex. 2.1: y4[n] signal, for n in [-50, 50]');
+subplot(5,1,1), plot(n, x(n)), title('x[n] signal, for n in [-50, 50]');
+subplot(5,1,2), plot(n, y1(n)), title('y1[n] signal, for n in [-50, 50]');
+subplot(5,1,3), plot(n, y2(n)), title('y2[n] signal, for n in [-50, 50]');
+subplot(5,1,4), plot(n, y3(n)), title('y3[n] signal, for n in [-50, 50]');
+subplot(5,1,5), plot(n, y4(n)), title('y4[n] signal, for n in [-50, 50]');
 
 %% Ex. 2.2.
 % u[n], x[n] and y1[n] are redefined, since a clear workspace is always
@@ -60,5 +60,5 @@ y1 = @(n) 0.4 * x(n - 1) + 0.6 * x(n - 3) - 0.2 * x(n - 4);
 y1_x_noise = @(n) 0.4 * x_noise_values(n - 1 + OFF) + 0.6 * x_noise_values(n - 3 + OFF) - 0.2 * x_noise_values(n - 4 + OFF);
 
 figure('Name', 'Ex. 2.2: x[n] (blue) and x[n] with uniform noise between ]-0.2, 0.2[ (red), for n in [-54, 50] (above); y1[n] system''s response for x[n] (blue) and x[n] with noise, for n in [-50, 50] (below)');
-subplot(2, 1, 1), plot(n_memory, x(n_memory), 'b', n_memory, x_noise_values, 'r'), title('Ex. 2.2: x[n] (blue) and x[n] with uniform noise between ]-0.2, 0.2[ (red), for n in [-54, 50]');
-subplot(2, 1, 2), plot(n, y1(n), 'b', n, y1_x_noise(n), 'r'), title('Ex. 2.2: y1[n] system''s response for x[n] (blue) and the above x[n] with noise (red), for n in [-50, 50]');
+subplot(2, 1, 1), plot(n_memory, x(n_memory), 'b', n_memory, x_noise_values, 'r'), title('x[n] (blue) and x[n] with uniform noise between ]-0.2, 0.2[ (red), for n in [-54, 50]');
+subplot(2, 1, 2), plot(n, y1(n), 'b', n, y1_x_noise(n), 'r'), title('y1[n] system''s response for x[n] (blue) and the above x[n] with noise (red), for n in [-50, 50]');

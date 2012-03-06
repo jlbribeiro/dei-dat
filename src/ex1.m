@@ -19,8 +19,8 @@ t_t = linspace(-pi, pi, N_POINTS);
 x_t1 = 2 * sin(2 * t_t) .* cos(11 * t_t) + 5 .* cos(8 * t_t) .^ 2;
 x_t2 = 5/2 * cos(0) + cos(9 * t_t + pi/2) + cos(13 * t_t + 3*pi/2) + 5/2 * cos(16 * t_t);
 
-titl = 'Ex. 1.1: Original signal expression overlapped by the cosine sum signal expression, with t in [-pi,pi]';
-figure('Name', titl);
+titl = 'Original signal expression overlapped by the cosine sum signal expression, with t in [-pi,pi]';
+figure('Name', sprintf('Ex. 1.1: %s', titl));
 plot(t_t, x_t1, 'b-', t_t, x_t2, 'r-.');
 title(titl);
 
@@ -44,13 +44,14 @@ t_n = -floor(((pi-(-pi))/Ts)/2):1:floor(((pi-(-pi))/Ts)/2);
 x_t = 5/2 * cos(0) + cos(9 * t_t + pi/2) + cos(13 * t_t + 3*pi/2) + 5/2 * cos(16 * t_t);
 x_n = 5/2 * cos(0) + cos(9 * t_n * Ts + pi/2) + cos(13 * t_n * Ts + 3*pi/2) + 5/2 * cos(16 * t_n * Ts);
 
-titl = sprintf('Ex. 1.3: x(t) representation using %d samples (blue), with t in [-pi,pi]; x[n] representation using Ts = %.1fs (red) on the same interval', N_POINTS, Ts);
-figure('Name', titl);
+titl = sprintf('x(t) representation using %d samples (blue), with t in [-pi,pi]; x[n] representation using Ts = %.1fs (red) on the same interval', N_POINTS, Ts);
+figure('Name', sprintf('Ex. 1.3: %s', titl));
 plot(t_t, x_t, 'b-', t_n * Ts, x_n, 'r*');
 title(titl);
 
 %% Ex.1.4.
 MAX_ERROR = 0.001;
+N_TIMES = 30;
 
 syms t;
 x_1 = 5/2 * cos(0) + cos(9 * t + pi/2) + cos(13 * t + 3*pi/2) + 5/2 * cos(16 * t);
@@ -65,31 +66,47 @@ x_1 = 5/2 * cos(0) + cos(9 * t + pi/2) + cos(13 * t + 3*pi/2) + 5/2 * cos(16 * t
 x_1_energy = x_1 ^ 2;
 
 % warning('off','symbolic:sym:int:warnmsg1'); % suppress the "Warning: Explicit integral could not be found." message
+time_t = 0;
+for i=1:N_TIMES,
 tic;
 energy_t = int(x_1_energy, t, -pi, pi);
-time_t = toc;
+time_t = time_t + toc;
+end;
+time_t = time_t / N_TIMES;
 % warning('on','symbolic:sym:int:warnmsg1');
 fprintf('x_1(t) exact energy value for t ∈ [-π,π]:\n\tvalue: %s ≈ %.4f\n\texecution_time: %fs\n\n', char(energy_t), double(energy_t), time_t);
 
 % warning('off','symbolic:mupadmex:MuPADTextWarning'); % suppress the "Warning: Function 'dirac' is not verified to be a valid MATLAB function." message
+time_trap = 0;
+for i=1:N_TIMES,
 tic;
 [energy_trap, step_trap] = trapezoidmaxerror(x_1_energy, -pi, pi, MAX_ERROR);
-time_trap = toc;
+time_trap = time_trap + toc;
+end;
+time_trap = time_trap / N_TIMES;
 % warning('on', 'symbolic:mupadmex:MuPADTextWarning');
 fprintf('x_1(t) approximated energy value for t ∈ [-π,π] using the Trapezoid Rule (maximal error of %.3f):\n\tvalue: %.4f\n\tnecessary step: %f\n\texecution time: %fs\n\n', MAX_ERROR, energy_trap, step_trap, time_trap);
 
 % warning('off','symbolic:mupadmex:MuPADTextWarning'); % suppress the "Warning: Function 'dirac' is not verified to be a valid MATLAB function." message
+time_simpson = 0;
+for i=1:N_TIMES,
 tic;
 [energy_simpson, step_simpson] = simpsonmaxerror(x_1_energy, -pi, pi, MAX_ERROR);
-time_simpson = toc;
+time_simpson = time_simpson + toc;
+end;
+time_simpson = time_simpson / N_TIMES;
 % warning('on', 'symbolic:mupadmex:MuPADTextWarning');
 fprintf('x_1(t) approximated energy value for t ∈ [-π,π] using Simpson Rule (maximal error of %.3f):\n\tvalue: %.4f\n\tnecessary step: %f\n\texecution time: %fs\n', MAX_ERROR, energy_simpson, step_simpson, time_simpson);
 
 %% Ex.1.5.
 %%%
 % Energy calculation using matrixes (for GPU-accelerated operations)
-% energy_n = sum(abs(x_n).^2)
+% energy_n = sum(abs(x_n).^2);
 %%%
+
+Ts = 0.1;
+t_n = -floor(((pi-(-pi))/Ts)/2):1:floor(((pi-(-pi))/Ts)/2);
+x_n = 5/2 * cos(0) + cos(9 * t_n * Ts + pi/2) + cos(13 * t_n * Ts + 3*pi/2) + 5/2 * cos(16 * t_n * Ts);
 
 energy_n = 0;
 for i=1:length(x_n),
