@@ -34,7 +34,7 @@
 
 \hyphenation{}
 
-\marginsize{3.5cm}{3.5cm}{3cm}{3cm}
+\marginsize{3.0cm}{3.0cm}{3cm}{3cm}
 
 \makeatletter
 
@@ -169,7 +169,7 @@ M \ge f''(\xi)
 N = \left\lceil \sqrt{\left| \frac{(b - a)^3}{12 \, max\_error} \, M \right|} \, \right\rceil
 \end{equation}
 
-O cálculo da energia do sinal $x_{1}(t)$ efectuado com a Regra do Trapézio obteve como resultado o valor de $65.1880 J$, utilizando um \emph{step} de $0.000499s$. O cálculo demorou, em média\footnote{Média de 30 iterações.}, $0.105080s$.
+O cálculo da energia do sinal $x_{1}(t)$ efectuado com a Regra do Trapézio obteve como resultado o valor de $65.1880 J$, utilizando um \emph{step} de $0.000499s$ (correspondente a $N = 12589$). O cálculo demorou, em média\footnote{Média de 30 iterações.}, $0.105080s$. Por comparação com o integral calculado por cálculo simbólico, o menor $N$ para o qual se obtém um erro inferior a $0.001$ é $5$.
 
 \subsubsection{Simpson's Rule}
 \noindent A \emph{Regra de Simpson} é outra técnica de integração numérica que aproxima um integral calculando a soma da área das parábolas. A aproximação do integral segundo esta regra, considerando $N$ intervalos igualmente espaçados (onde $N \in 2 \, \mathbb{Z})$ é:
@@ -187,12 +187,12 @@ error = \frac{(b-a)^5}{180 \, N} \, f^{(IV)} (\xi)
 M \ge f^{(IV)}
 \end{equation}
 
-Depois de obter o M, podemos colocar a fórmula em ordem N, obtém-se\footnote{Deverá somar-se 1 a $N$ caso $N$ seja ímpar, de forma a garantir que $N \in 2 \mathbb{Z}.$}:
+\noindent Depois de obter o M, podemos colocar a fórmula em ordem N, obtém-se\footnote{Deverá somar-se 1 a $N$ caso $N$ seja ímpar, de forma a garantir que $N \in 2 \mathbb{Z}.$}:
 \begin{equation}
 N = \left\lceil \sqrt[4]{\left| \frac{(b - a)^5}{180 \, max\_error} \, M \right|} \right\rceil
 \end{equation}
 
-O cálculo da energia do sinal $x_{1}(t)$ efectuado com a Regra de Simpson obteve como resultado o valor de $65.1880J$, utilizando um \emph{step} de $0.008118s$. O cálculo demorou, em média\footnote{Média de 30 iterações.}, $0.116167s$.
+\noindent O cálculo da energia do sinal $x_{1}(t)$ efectuado com a Regra de Simpson obteve como resultado o valor de $65.1880J$, utilizando um \emph{step} de $0.008118s$ (correspondente a $N = 776$). O cálculo demorou, em média\footnote{Média de 30 iterações.}, $0.116167s$. Por comparação com o integral calculado por cálculo simbólico, o menor $N$ para o qual se obtém um erro inferior a $0.001$ é $10$.
 
 \subsection{Exercise 1.5}
 \noindent O cálculo da energia de um sinal discreto é dado pela fórmula:
@@ -200,17 +200,156 @@ O cálculo da energia do sinal $x_{1}(t)$ efectuado com a Regra de Simpson obtev
 E = \sum_{n = -\infty}^{\infty} | x[n] |^2
 \end{equation}
 
-Como tal, para calcular a energia de um sinal $x[n]$ para $n$ correspondente ao intervalo $[a, b]$, basta calcular o somatório de todos os valores do sinal no intervalo $n \in \left[ sgn\left(\frac{a}{T_{s}}\right) \, \left\lfloor \left| \frac{a}{T_{s}} \right| \right\rfloor, sgn\left(\frac{b}{T_{s}}\right) \, \left\lfloor \left| \frac{b}{T_{s}} \right| \right\rfloor \right]$\footnote{Esta fórmula garante que os valores do intervalo (que é $\subset \mathbb{Z}$), quando multiplicados por $T_{s}$, correspondem a valores contidos no intervalo original.}, onde $T_{s}$ é o período de amostragem.
+\noindent Como tal, para calcular a energia de um sinal $x[n]$ para $n$ correspondente ao intervalo $[a, b]$, basta calcular o somatório de todos os valores do sinal no intervalo $n \in \left[ sgn\left(\frac{a}{T_{s}}\right) \, \left\lfloor \left| \frac{a}{T_{s}} \right| \right\rfloor, sgn\left(\frac{b}{T_{s}}\right) \, \left\lfloor \left| \frac{b}{T_{s}} \right| \right\rfloor \right]$\footnote{Esta fórmula garante que os valores do intervalo (que é $\subset \mathbb{Z}$), quando multiplicados por $T_{s}$, correspondem a valores contidos no intervalo original.}, onde $T_{s}$ é o período de amostragem.
 
 \noindent Após a substituição no cálculo do intervalo, obtém-se que $n$ pertence ao intervalo $[-31, 31]$. O valor da energia de $x_1[n]$ obtido para $n \in [-31, 31]$ é de aproximadamente $656.6213J$.
 \clearpage
 
 \section{Exercise 2}
 \subsection{Exercise 2.1}
-\indent \indent 
+\noindent O sinal de tempo discreto utilizado foi o seguinte:
+\begin{equation}
+x[n] = 1.5 \, cos[0.025 \, \pi \, n] (u[n + 40] - u[n - 40])
+\end{equation}
 
-% ...
+Após a substituição das variáveis nas expressões (usando $G\# = 25$) obtêm-se as seguintes equações:
+\begin{eqnarray}
+	y_{1}[n] & = & 0.4 \, x[n - 1] + 0.6 \, x[n - 3] - 0.2 \, x[n - 4] \\
+	y_{2}[n] & = & 1.2 \, x[2n - 4] \\
+	y_{3}[n] & = & x[n - 2] \, x[n - 3] \\
+	y_{4}[n] & = & (n - 2) \, x[n - 3]
+\end{eqnarray}
 
+\noindent Apresentam-se as representações dos mesmos sinais para o intervalo $-50 \leq n \leq 50$:
+
+\begin{center}
+	\includegraphics[scale=0.45]{images/ex21.png}
+	\captionof{figure}{Top-down: $x[n]$, $y_{1}[n]$, $y_{2}[n]$, $y_{3}[n]$ and $y_{4}[n]$ plots, for $-50 \leq n \leq 50$.}
+	\label{fig:ex21}
+\end{center}
+
+\subsection{Exercise 2.2}
+\noindent Na imagem seguinte apresentam-se as entradas $x[n]$ e $x[n]$ com ruído uniforme no intervalo $]-0.2, 0.2[$ (em cima, a azul e vermelho, respectivamente) e a resposta do sistema $y_{1}[n]$ a essas mesmas entradas (em baixo, a azul a resposta à entrada $x[n]$, a vermelho a resposta à entrada de $x[n]$ com ruído).
+
+\begin{center}
+	\includegraphics[scale=0.45]{images/ex22.png}
+	\captionof{figure}{Above: $x[n]$ (blue) and $x[n]$ with uniform noise on the $[-0.2, 0.2]$; below: $y_{1}[n]$ response to $x_{1}[n]$ (blue) and $y_{1}[n]$ response to $x_{1}[n]$ with noise (red).}
+	\label{fig:ex22}
+\end{center}
+
+\subsection{Exercise 2.3}
+\noindent Para que um sistema seja linear, este deve verificar duas propriedades: \textbf{aditividade} e \textbf{homogeneidade}.
+
+\noindent Para que um sistema verifique a propriedade de \textbf{aditividade}, é necessário que se verifique a seguinte igualdade:
+\[
+	\left\{
+		\begin{aligned}
+			T\{x_{1}[n]\} & = & y_{1}[n] \\
+			T\{x_{2}[n]\} & = & y_{2}[n]
+		\end{aligned}
+	\right.
+	\xrightarrow[\text{aditividade}]{}
+	T\{x_{1}[n] + x_{2}[n]\} = y_{1}[n] + y_{2}[n]
+\]
+
+\noindent Para que um sistema verifique a propriedade de \textbf{homogeneidade}, é necessário que se verifique
+\[
+	T\{x[n]\} = y[n] \xrightarrow[\text{homogeneidade}]{} T\{a \, x[n]\} = a \, y[n]
+\]
+
+\noindent em que $a$ é uma constante arbitrária.
+
+\noindent Em seguida analisa-se a linearidade dos sistemas $y_{1}[n]$, $y_{2}[n]$, $y_{3}[n]$ e $y_{4}[n]$.
+
+\subsubsection{Análise de linearidade do sistema $y_{1}[n]$}
+\noindent \textbf{Aditividade}
+\begin{eqnarray}
+	T\{x_{1}[n]\}					& = & 0.4 \, x_{1}[n - 1] + 0.6 \, x_{1}[n - 3] - 0.2 \, x_{1}[n - 4] \\
+	T\{x_{2}[n]\}					& = & 0.4 \, x_{2}[n - 1] + 0.6 \, x_{2}[n - 3] - 0.2 \, x_{2}[n - 4] \\
+	\nonumber \\
+	T\{x_{1}[n] + x_{2}[n]\}		& = & 0.4 \, (x_{1}[n - 1] + x_{2}[n - 1]) + 0.6 \, (x_{1}[n - 3] + x_{2}[n - 3]) \nonumber \\ && - 0.2 \, (x_{1}[n - 4] + x_{2}[n - 4]) \\
+									& = & 0.4 \, x_{1}[n - 1] + 0.4 \, x_{2}[n - 1] + 0.6 \, x_{1}[n - 3] + 0.6 \, x_{2}[n - 3] \nonumber \\ && - 0.2 \, x_{1}[n - 4] - 0.2 x_{2}[n - 4] \\
+	\nonumber \\
+	T\{x_{1}[n]\} + T\{x_{2}[n]\}	& = & 0.4 \, x_{1}[n - 1] + 0.6 \, x_{1}[n - 3] - 0.2 \, x_{1}[n - 4] + 0.4 \, x_{2}[n - 1] + \nonumber \\ && 0.6 \, x_{2}[n - 3] - 0.2 \, x_{2}[n - 4]
+\end{eqnarray}
+
+\noindent Dado que $T\{x_{1}[n] + x_{2}[n]\} = T\{x_{1}[n]\} + T\{x_{2}[n]\}$, este sistema \textbf{verifica} a propriedade de \textbf{aditividade}. \\
+
+\noindent \textbf{Homogeneidade}
+\begin{eqnarray}
+	T\{a \, x[n]\}					& = & 0.4 \, a \, x[n - 1] + 0.6 \, a \, x[n - 3] - 0.2 \, a \, x[n - 4] \\
+									& = & a \, (0.4 \, x[n - 1] + 0.6 \, x[n - 3] - 0.2 \, x[n - 4])
+\end{eqnarray}
+
+\noindent Dado que $T\{a \, x[n]\} = a \, T\{x[n]\}$, este sistema \textbf{verifica} a propriedade de \textbf{homogeneidade}. Como verifica as duas condições, este sistema é \textbf{linear}.
+
+\subsubsection{Análise de linearidade do sistema $y_{2}[n]$}
+\noindent \textbf{Aditividade}
+\begin{eqnarray}
+	T\{x_{1}[n]\}					& = & 1.2 \, x_{1}[2n - 4] \\
+	T\{x_{2}[n]\}					& = & 1.2 \, x_{2}[2n - 4] \\
+	\nonumber \\
+	T\{x_{1}[n] + x_{2}[n]\}		& = & 1.2 \, (x_{1}[2n - 4] + x_{2}[2n - 4]) \\
+									& = & 1.2 \, x_{1}[2n - 4] + 1.2 \, x_{2}[2n - 4] \\
+	T\{x_{1}[n]\} + T\{x_{2}[n]\}	& = & 1.2 \, x_{1}[2n - 4] + 1.2 \, x_{2}[2n - 4]
+\end{eqnarray}
+
+\noindent Dado que $T\{x_{1}[n] + x_{2}[n]\} = T\{x_{1}[n]\} + T\{x_{2}[n]\}$, este sistema \textbf{verifica} a propriedade de \textbf{aditividade}. \\
+
+\noindent \textbf{Homogeneidade}
+\begin{eqnarray}
+	T\{a \, x[n]\}					& = & 1.2 \, a \, x[2n - 4] \\
+									& = & a \, (1.2 \, x[2n - 4])
+\end{eqnarray}
+
+\noindent Dado que $T\{a \, x[n]\} = a \, T\{x[n]\}$, este sistema \textbf{verifica} a propriedade de \textbf{homogeneidade}. Como verifica as duas condições, este sistema é \textbf{linear}.
+
+\subsubsection{Análise de linearidade do sistema $y_{3}[n]$}
+\noindent \textbf{Aditividade}
+\begin{eqnarray}
+	T\{x_{1}[n]\}					& = & x_{1}[n - 2] \, x_{1}[n - 3] \\
+	T\{x_{2}[n]\}					& = & x_{2}[n - 2] \, x_{2}[n - 3] \\
+	\nonumber \\
+	T\{x_{1}[n] + x_{2}[n]\}		& = & (x_{1}[n - 2] + x_{2}[n - 2]) (x_{1}[n - 3] + x_{2}[n - 3]) \\
+									& = & x_{1}[n - 2] \, x_{1}[n - 3] + x_{1}[n - 2] \, x_{2}[n - 3] + \nonumber \\ && x_{2}[n - 2] \, x_{1}[n - 3] + x_{2}[n - 2] \, x_{2}[n - 3] \\
+	T\{x_{1}[n]\} + T\{x_{2}[n]\}	& = & x_{1}[n - 2] \, x_{1}[n - 3] + x_{2}[n - 2] \, x_{2}[n - 3]
+\end{eqnarray}
+
+\noindent Dado que $T\{x_{1}[n] + x_{2}[n]\} \neq T\{x_{1}[n]\} + T\{x_{2}[n]\}$, este sistema \textbf{não verifica} a propriedade de \textbf{aditividade}; consequentemente, este sistema \textbf{não é linear}. \\
+Procede-se ainda assim à análise da homogeneidade. \\
+
+\noindent \textbf{Homogeneidade}
+\begin{eqnarray}
+	T\{a \, x[n]\}					& = & a \, x[n - 2] \, a \, x[n - 3] \\
+									& = & a^2 (x[n - 2] \, a \, x[n - 3])
+\end{eqnarray}
+
+\noindent Dado que $T\{a \, x[n]\} \neq a \, T\{x[n]\}$, este sistema também \textbf{não verifica} a propriedade de \textbf{homogeneidade}.
+
+\subsubsection{Análise de linearidade do sistema $y_{4}[n]$}
+\noindent \textbf{Aditividade}
+\begin{eqnarray}
+	T\{x_{1}[n]\}					& = & (n - 2) \, x_{1}[n - 3] \\
+	T\{x_{2}[n]\}					& = & (n - 2) \, x_{2}[n - 3] \\
+	\nonumber \\
+	T\{x_{1}[n] + x_{2}[n]\}		& = & (n - 2) \, (x_{1}[n - 3] + x_{2}[n - 3]) \\
+									& = & n \, x_{1}[n - 3] + n \, x_{2}[n - 3] - 2 \, x_{1}[n - 3] - 2 \, x_{2}[n - 3] \\
+	T\{x_{1}[n]\} + T\{x_{2}[n]\}	& = & (n - 2) \, x_{1}[n - 3] + (n - 2) \, x_{2}[n - 3] \\
+									& = & n \, x_{1}[n - 3] - 2 \, x_{1}[n - 3] + n \, x_{2}[n - 3] - 2 \, x_{2}[n - 3]
+\end{eqnarray}
+
+\noindent Dado que $T\{x_{1}[n] + x_{2}[n]\} = T\{x_{1}[n]\} + T\{x_{2}[n]\}$, este sistema \textbf{verifica} a propriedade de \textbf{aditividade}. \\
+
+\noindent \textbf{Homogeneidade}
+\begin{eqnarray}
+	T\{a \, x[n]\}					& = & (n - 2) \, a \, x_{1}[n - 3] \\
+									& = & a \, ((n - 2) \, x_{1}[n - 3])
+\end{eqnarray}
+
+\noindent Dado que $T\{a \, x[n]\} = a \, T\{x[n]\}$, este sistema \textbf{verifica} a propriedade de \textbf{homogeneidade}. Como verifica as duas condições, este sistema é \textbf{linear}.
+
+\subsection{Exercice 2.4}
+\noindent TODO
 
 \section{Exercise 3}
 \subsection{Exercise 3.1}
