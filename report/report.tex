@@ -261,7 +261,8 @@ Após a substituição das variáveis nas expressões (usando $G\# = 25$) obtêm
 
 \noindent Em seguida analisa-se a linearidade dos sistemas $y_{1}[n]$, $y_{2}[n]$, $y_{3}[n]$ e $y_{4}[n]$.
 
-\subsubsection{Análise de linearidade do sistema $y_{1}[n]$}
+\subsubsection{Análise de linearidade do sistema $\mathbf{y_{1}[n]}$}
+\label{subsubsec:liny1}
 \noindent \textbf{Aditividade}
 \begin{eqnarray}
 	T\{x_{1}[n]\}					& = & 0.4 \, x_{1}[n - 1] + 0.6 \, x_{1}[n - 3] - 0.2 \, x_{1}[n - 4] \\
@@ -283,7 +284,7 @@ Após a substituição das variáveis nas expressões (usando $G\# = 25$) obtêm
 
 \noindent Dado que $T\{a \, x[n]\} = a \, T\{x[n]\}$, este sistema \textbf{verifica} a propriedade de \textbf{homogeneidade}. Como verifica as duas condições, este sistema é \textbf{linear}.
 
-\subsubsection{Análise de linearidade do sistema $y_{2}[n]$}
+\subsubsection{Análise de linearidade do sistema $\mathbf{y_{2}[n]}$}
 \noindent \textbf{Aditividade}
 \begin{eqnarray}
 	T\{x_{1}[n]\}					& = & 1.2 \, x_{1}[2n - 4] \\
@@ -304,7 +305,7 @@ Após a substituição das variáveis nas expressões (usando $G\# = 25$) obtêm
 
 \noindent Dado que $T\{a \, x[n]\} = a \, T\{x[n]\}$, este sistema \textbf{verifica} a propriedade de \textbf{homogeneidade}. Como verifica as duas condições, este sistema é \textbf{linear}.
 
-\subsubsection{Análise de linearidade do sistema $y_{3}[n]$}
+\subsubsection{Análise de linearidade do sistema $\mathbf{y_{3}[n]}$}
 \noindent \textbf{Aditividade}
 \begin{eqnarray}
 	T\{x_{1}[n]\}					& = & x_{1}[n - 2] \, x_{1}[n - 3] \\
@@ -326,7 +327,7 @@ Procede-se ainda assim à análise da homogeneidade. \\
 
 \noindent Dado que $T\{a \, x[n]\} \neq a \, T\{x[n]\}$, este sistema também \textbf{não verifica} a propriedade de \textbf{homogeneidade}.
 
-\subsubsection{Análise de linearidade do sistema $y_{4}[n]$}
+\subsubsection{Análise de linearidade do sistema $\mathbf{y_{4}[n]}$}
 \noindent \textbf{Aditividade}
 \begin{eqnarray}
 	T\{x_{1}[n]\}					& = & (n - 2) \, x_{1}[n - 3] \\
@@ -348,14 +349,69 @@ Procede-se ainda assim à análise da homogeneidade. \\
 
 \noindent Dado que $T\{a \, x[n]\} = a \, T\{x[n]\}$, este sistema \textbf{verifica} a propriedade de \textbf{homogeneidade}. Como verifica as duas condições, este sistema é \textbf{linear}.
 
-\subsection{Exercice 2.4}
-\noindent TODO
+\subsection{Exercise 2.4}
+\noindent Para que um sistema seja invariante no tempo, é necessário que este verifique a seguinte propriedade:
+\[
+	T\{x[n]\} = y[n]
+	\xrightarrow[\text{invariância no tempo}]{}
+	T\{x[n - n_{0}]\} = y[n - n_{0}]
+\]
+
+Segue-se a análise da invariância no tempo dos 4 sinais.
+
+\subsubsection{Análise de invariância no tempo do sistema $\mathbf{y_{1}[n]}$}
+\begin{eqnarray}
+	T\{x[n - n_{0}]\}	& = & 0.4 \, x[n - n_{0} - 1] + 0.6 \, x[n - n_{0} - 3] - 0.2 \, x[n - n_{0} - 4] \\
+	y[n - n_ {0}]		& = & 0.4 \, x[n - n_{0} - 1] + 0.6 \, x[n - n_{0} - 3] - 0.2 \, x[n - n_{0} - 4]
+\end{eqnarray}
+
+\noindent Dado que $T\{x[n - n_{0}]\} = y[n - n_ {0}]$, pode-se concluir que o sistema \textbf{é invariante no tempo}. Dada a sua linearidade (verificada em \emph{\nameref{subsubsec:liny1}}), é possível concluir que este é um sistema \emph{SLIT}.
+
+\subsubsection{Análise de invariância no tempo do sistema $\mathbf{y_{2}[n]}$}
+\begin{eqnarray}
+	T\{x[n - n_{0}]\}	& = & 1.2 \, x[2n - n_{0} - 4] \\
+	y[n - n_ {0}]		& = & 1.2 \, x[2 \, (n - n_{0}) - 4] \\
+						& = & 1.2 \, x[2 \, n - 2 \, n_{0} - 4]
+\end{eqnarray}
+
+\noindent Dado que $T\{x[n - n_{0}]\} \neq y[n - n_ {0}]$, pode-se concluir que o sistema \textbf{não é invariante no tempo}.
+
+\subsubsection{Análise de invariância no tempo do sistema $\mathbf{y_{3}[n]}$}
+\begin{eqnarray}
+	T\{x[n - n_{0}]\}	& = & x[n - n_{0} - 2] \, x[n - n_{0} - 3] \\
+	y[n - n_ {0}]		& = & x[n - n_{0} - 2] \, x[n - n_{0} - 3]
+\end{eqnarray}
+
+\noindent Dado que $T\{x[n - n_{0}]\} = y[n - n_ {0}]$, pode-se concluir que o sistema \textbf{é invariante no tempo}.
+
+\subsubsection{Análise de invariância no tempo do sistema $\mathbf{y_{4}[n]}$}
+\begin{eqnarray}
+	T\{x[n - n_{0}]\}	& = & (n - 2) \, x[n - n_{0} - 3] \\
+	y[n - n_ {0}]		& = & (n - n_{0} - 2) \, x[n - n_{0} - 3]
+\end{eqnarray}
+
+\noindent Dado que $T\{x[n - n_{0}]\} \neq y[n - n_ {0}]$, pode-se concluir que o sistema \textbf{não é invariante no tempo}.
+
+\subsection{Exercise 2.5}
+\noindent TODO % TODO
+
+\subsection{Exercise 2.6}
+\noindent TODO % TODO
+
+\subsection{Exercise 2.7}
+\noindent TODO % TODO
 
 \section{Exercise 3}
 \subsection{Exercise 3.1}
-\indent \indent 
+\noindent TODO % TODO
 
-% ...
+\subsection{Exercise 3.2}
+\noindent TODO % TODO
 
+\subsection{Exercise 3.3}
+\noindent TODO % TODO
+
+\subsection{Exercise 3.4}
+\noindent TODO % TODO
 
 \end{document}
