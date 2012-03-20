@@ -62,3 +62,28 @@ y1_x_noise = @(n) 0.4 * x_noise_values(n - 1 + OFF) + 0.6 * x_noise_values(n - 3
 figure('Name', 'Ex. 2.2: x[n] (blue) and x[n] with uniform noise between ]-0.2, 0.2[ (red), for n in [-54, 50] (above); y1[n] system''s response for x[n] (blue) and x[n] with noise, for n in [-50, 50] (below)');
 subplot(2, 1, 1), plot(n_memory, x(n_memory), 'b', n_memory, x_noise_values, 'r'), title('x[n] (blue) and x[n] with uniform noise between ]-0.2, 0.2[ (red), for n in [-54, 50]');
 subplot(2, 1, 2), plot(n, y1(n), 'b', n, y1_x_noise(n), 'r'), title('y1[n] system''s response for x[n] (blue) and the above x[n] with noise (red), for n in [-50, 50]');
+
+%% Ex. 2.5.
+LLIM = -50;
+RLIM = 50;
+
+kronecker = @(x) x == 0;
+n = LLIM:1:RLIM;
+
+% y1[n] impulse response
+h_n = 0.4 * kronecker(n - 1) + 0.6 * kronecker(n - 3) - 0.2 * kronecker(n - 4);
+
+titl = 'y1[n] impulse response, for n in [-50, 50]';
+figure('Name', sprintf('Ex. 2.5: %s', titl));
+stem(n, h_n), title(titl);
+
+%% Ex. 2.7.
+min_i = inf;
+max_i = -inf;
+for k = -1:0.0001:1,
+	if (all(abs(roots([1 0.4*k 0 0.9*k -0.2*k])) < 1))
+		min_i = min(min_i, k);
+		max_i = max(max_i, k);
+	end
+end
+fprintf('Ex. 2.7: k is in [%.3f %.3f]\n', min_i, max_i);
