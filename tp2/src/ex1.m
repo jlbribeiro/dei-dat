@@ -60,4 +60,33 @@ end;
 syms z;
 H = (0.3137 * z^-3 - 0.1537 * z^-5) / (1 - 2.3 * z^-1 + 1.74 * z^-2 - 0.432 * z^-3);
 h = iztrans(H);
-fprintf(sprintf('Ex. 1.2.3\nSystem''s impulse response, h[n]:\n%s\n\n', char(h)));
+fprintf('Ex. 1.2.3\nSystem''s impulse response, h[n]:\n');
+pretty(h);
+fprintf('\n\n');
+
+%% Ex. 1.2.4
+LLIM = 0;
+RLIM = 70;
+
+b = [0 0 0 0.3137 0 -0.1537];
+a = [1 -2.3 1.74 -0.432];
+
+syms z;
+H = (0.3137 * z^-3 - 0.1537 * z^-5) / (1 - 2.3 * z^-1 + 1.74 * z^-2 - 0.432 * z^-3);
+h = iztrans(H);
+
+n = LLIM:RLIM;
+
+h1_n = subs(h, 'n', n);
+h2_n = impz(b, a, length(n))';
+h3_n = dimpulse(b, a)';
+
+titl_ = 'Ex. 1.2.4: h[n], n %s [0, 70], using iztrans (blue), impz (red) and dimpulse (green)';
+figure('Name', sprintf(titl_, '∈'));
+hold all;
+stairs(h1_n);
+plot(h2_n(1:RLIM), 'ro');
+plot(h3_n, 'g+');
+hold off;
+title(sprintf(titl_, 'in'));
+legend('h[n] using iztrans', 'h[n] using impz', 'h[n] using dimpulse');

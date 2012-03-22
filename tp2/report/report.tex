@@ -103,6 +103,7 @@
 \noindent Como se pode observar, todos os pólos e raízes estão contidos no círculo de raio unitário. Como tal, este sistema é \textbf{estável}.
 
 \subsubsection{Exercise 1.2.3}
+\label{subsubsec:ex1_2_3}
 \noindent Dado que assumimos que
 \begin{equation}
 	G(z) = H(z)|_{\text{condições iniciais nulas}} \\
@@ -112,5 +113,17 @@
 \begin{equation}
 	h[n] = \mathcal{Z}^{-1}\{G(z)\} = \frac{44573}{31104} \, \delta[n - 1] + \frac{1537}{4320} \, \delta[n - 2] - \frac{1274 \, (\frac{3}{5}) ^ n}{405} - \frac{11767 \, (\frac{4}{5}) ^ n}{2560} + \frac{100397 \, (\frac{9}{10}) ^ n}{21870} + \frac{17644573}{5598720} \, \delta[n]
 \end{equation}
+
+\subsection{Exercise 1.2.4}
+\noindent Em seguida apresenta-se a resposta a impulso do sistema, segundo a expressão obtida em \emph{\nameref{subsubsec:ex1_2_3}} (azul) e segundo as funções do \texttt{MATLAB} \texttt{impz} (vermelho) e \texttt{dimpulse} (verde).
+
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex1_2_4.png}
+	\captionof{figure}{$h[n]$, $n \in [0, 70]$, using \texttt{iztrans} (blue), \texttt{impz} (red) and \texttt{dimpulse} (green).}
+	\label{fig:ex1_2_4_zplane}
+\end{center}
+
+\subsection{Exercise 1.2.5}
+TODO
 
 \end{document}
