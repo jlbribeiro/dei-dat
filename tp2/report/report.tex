@@ -1,0 +1,113 @@
+\documentclass[a4paper]{article}
+
+\usepackage[portuguese,english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\newcommand{\documentTitle}{Data Analysis and Transformation \\ TP1: Fundamentals of Signals and Systems}
+\newcommand{\pdfTitle}{[ATD] TP1: Fundamentals of Signals and Systems}
+\newcommand{\documentAuthors}{José Ribeiro (2008112181, jbaia@student.dei.uc.pt) \\ Pedro Magalhães (2009117002, pjrosa@student.dei.uc.pt)}
+
+\title{\documentTitle}
+\author{\documentAuthors}
+
+\usepackage{hyperref}
+\hypersetup{
+	pdftitle = \pdfTitle
+	,pdfauthor = \documentAuthors
+	,pdfsubject = {Data Analysis and Transformation}
+	,pdfkeywords = {Data Analysis and Transformation} {Signal Processing}
+	,pdfborder = {0 0 0}
+}
+
+%\usepackage{subfig}
+%\usepackage{amsmath}
+%\usepackage{array}
+\usepackage{anysize}
+\usepackage{lscape}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{amssymb}
+%\usepackage[pdftex]{graphicx}
+%\usepackage[table]{xcolor}
+
+\hyphenation{}
+
+\marginsize{2.7cm}{2.7cm}{3cm}{3cm}
+
+\makeatletter
+
+\begin{document}
+\maketitle
+\cleardoublepage
+
+\tableofcontents
+\cleardoublepage
+
+\setlength{\parindent}{1cm}
+\setlength{\parskip}{0.3cm}
+
+\section{Exercise 1}
+\subsection{Exercise 1.1}
+\noindent Após substituição das variáveis pelo número de grupo, obtém-se a seguinte expressão:
+\begin{equation}
+	y[n] = 0.3137 \, x[n - 3] - 0.1537 \, x[n - 5] + 2.3 \, y[n - 1] - 1.74 \, y[n - 2] + 0.432 \, y[n - 3] \\
+\end{equation}
+
+\noindent A partir da expressão obtém-se
+\begin{equation}
+	y[n] - 2.3 \, y[n - 1] + 1.74 \, y[n - 2] - 0.432 \, y[n - 3] = 0.3137 \, x[n - 3] - 0.1537 \, x[n - 5] \\
+\end{equation}
+
+\noindent Aplicada a Transformada Z em ambos os lados da expressão
+
+\begin{equation}
+	\mathcal{Z}(y[n] - 2.3 \, y[n - 1] + 1.74 \, y[n - 2] - 0.432 \, y[n - 3]) = \mathcal{Z}(0.3137 \, x[n - 3] - 0.1537 \, x[n - 5])
+\end{equation}
+
+\noindent é possível obter-se a Função de Transferência do Sistema na forma polinomial.
+
+\noindent Dado que
+\begin{eqnarray}
+	G(z) & = & H(z)|_{\text{condições iniciais nulas}} \\
+		 & = & \mathcal{Z}\{h[n]\} \\
+		 & = & \frac{Y(z)}{X(z)}
+\end{eqnarray}
+
+\noindent tem-se que
+\begin{eqnarray}
+	&\mathcal{Z}\{y[n] - 2.3 \, y[n - 1] + 1.74 \, y[n - 2] - 0.432 \, y[n - 3]\} = \mathcal{Z}\{0.3137 \, x[n - 3] - 0.1537 \, x[n - 5]\} \\
+	&Y(z) - 2.3 \, z^{-1} \, Y(z) + 1.74 \, z^{-2} \, Y(z) - 0.432 \, z^{-3} \, Y(z) = 0.3137 \, z^{-3} \, X(z) - 0.1537 \, z^{-5} \, X(z) \\
+	&Y(z) (1 - 2.3 \, z^{-1} + 1.74 \, z^{-2} - 0.432 \, z^{-3}) = X(z)(0.3137 \, z^{-3} - 0.1537 \, z^{-5}) \\
+	&\frac{Y(z)}{X(z)} = \frac{0.3137 \, z^{-3} - 0.1537 \, z^{-5}}{1 - 2.3 \, z^{-1} + 1.74 \, z^{-2} - 0.432 \, z^{-3}}
+\end{eqnarray}
+
+\noindent pelo que se obtém que
+\begin{equation}
+	G(z) = \frac{0.3137 \, z^{-3} - 0.1537 \, z^{-5}}{1 - 2.3 \, z^{-1} + 1.74 \, z^{-2} - 0.432 \, z^{-3}}
+\end{equation}
+
+\subsection{Exercise 1.2}
+\subsubsection{Exercise 1.2.1}
+TODO
+
+% \begin{equation}
+%	x_{1}(t) = 2 \, sin(2 t) \, cos(11 t) + 5 \, cos^2 \, (8t)
+%	\label{eq:origsubst}
+% \end{equation}
+
+% \begin{eqnarray}
+% \label{eq:simplification}
+% x_{1}(t) & = & 2 \, sin(2 t) \, cos(11 t) + 5 \, cos^2 \, (8t) \\
+% 	 & = & sin(2 t + 11 t) + sin(2 t - 11 t) + 5 \, cos^2 \, (8t) \\
+% 	 & = & sin(13 t) + sin(- 9 t) + 5 \, cos^2 \, (8t) \\
+% 	 & = & - cos\left(13 t + \frac{\pi}{2}\right) - cos\left(- 9 t + \frac{\pi}{2}\right) + 5 \, cos^2 \, (8t) \\
+% 	 & = & cos\left(13 t + \frac{3 \pi}{2}\right) + cos\left(- 9 t + \frac{3 \pi}{2}\right) + 5 \, cos^2 \, (8t) \\
+% 	 & = & cos\left(13 t + \frac{3 \pi}{2}\right) + cos\left(9 t + \frac{\pi}{2}\right) + 5 \, cos^2 \, (8t) \\
+% 	 & = & cos\left(13 t + \frac{3 \pi}{2}\right) + cos\left(9 t + \frac{\pi}{2}\right) + 5 \left(\frac{1 + cos(2 * 8 t)}{2}\right) \\
+% 	 & = & cos\left(13 t + \frac{3 \pi}{2}\right) + cos\left(9 t + \frac{\pi}{2}\right) + \frac{5}{2} \, cos(0) + \frac{5}{2} \, cos(16 t) \\
+% 	 & = & \frac{5}{2} \, cos(0) + cos\left(9 t + \frac{\pi}{2}\right) + cos\left(13 t + \frac{3 \pi}{2}\right) + \frac{5}{2} \, cos(16 t)
+% \end{eqnarray}
+
+\end{document}
