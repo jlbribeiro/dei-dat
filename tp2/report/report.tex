@@ -80,18 +80,20 @@
 	&\mathcal{Z}\{y[n] - 2.3 \, y[n - 1] + 1.74 \, y[n - 2] - 0.432 \, y[n - 3]\} = \mathcal{Z}\{0.3137 \, x[n - 3] - 0.1537 \, x[n - 5]\} \\
 	&Y(z) - 2.3 \, z^{-1} \, Y(z) + 1.74 \, z^{-2} \, Y(z) - 0.432 \, z^{-3} \, Y(z) = 0.3137 \, z^{-3} \, X(z) - 0.1537 \, z^{-5} \, X(z) \\
 	&Y(z) (1 - 2.3 \, z^{-1} + 1.74 \, z^{-2} - 0.432 \, z^{-3}) = X(z)(0.3137 \, z^{-3} - 0.1537 \, z^{-5}) \\
-	&\frac{Y(z)}{X(z)} = \frac{0.3137 \, z^{-3} - 0.1537 \, z^{-5}}{1 - 2.3 \, z^{-1} + 1.74 \, z^{-2} - 0.432 \, z^{-3}}
+	&\frac{Y(z)}{X(z)} = \frac{0.3137 \, z^{-3} - 0.1537 \, z^{-5}}{1 - 2.3 \, z^{-1} + 1.74 \, z^{-2} - 0.432 \, z^{-3}} \\
+	&\frac{Y(z)}{X(z)} = \frac{z^{5} \, (0.3137 \, z^{-3} - 0.1537 \, z^{-5})}{z^{5} \, (1 - 2.3 \, z^{-1} + 1.74 \, z^{-2} - 0.432 \, z^{-3})} \\
+	&\frac{Y(z)}{X(z)} = \frac{0.3137 \, z^{2} - 0.1537}{z^{5} - 2.3 \, z^{4} + 1.74 \, z^{3} - 0.432 \, z^{2}}
 \end{eqnarray}
 
 \noindent pelo que se obtém que
 \begin{equation}
 	\label{eq:tf}
-	G(z) = \frac{0.3137 \, z^{-3} - 0.1537 \, z^{-5}}{1 - 2.3 \, z^{-1} + 1.74 \, z^{-2} - 0.432 \, z^{-3}}
+	G(z) = \frac{0.3137 \, z^{2} - 0.1537}{z^{5} - 2.3 \, z^{4} + 1.74 \, z^{3} - 0.432 \, z^{2}}
 \end{equation}
 
 \subsection{Exercise 1.2}
 \subsubsection{Exercise 1.2.1/1.2.2}
-\noindent A localização dos zeros e pólos de um sistema no plano $Z$ fornecem informações relativamente à estabilidade de um sistema. A partir da função de transferência (equação \ref{eq:tf}), é possível obter os zeros e pólos calculando os zeros do numerador e do denonimador, respectivamente. Como tal, obtiveram-se os zeros $\pm 0.7$ e os pólos $[0.6, 0.8, 0.9]$.
+\noindent A localização dos zeros e pólos de um sistema no plano $Z$ fornecem informações relativamente à estabilidade de um sistema. A partir da função de transferência (equação \ref{eq:tf}), é possível obter os zeros e pólos calculando os zeros do numerador e do denonimador, respectivamente. Como tal, obtiveram-se os zeros $\pm 0.7$ e os pólos $[0, 0, 0.6, 0.8, 0.9]$.
 
 \noindent De seguida apresenta-se a representação dos zeros e pólos no plano $Z$.
 \begin{center}

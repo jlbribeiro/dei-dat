@@ -15,7 +15,7 @@
 %% Ex. 1.2.
 %% Ex. 1.2.1
 b = [0 0 0 0.3137 0 -0.1537];
-a = [1 -2.3 1.74 -0.432];
+a = [1 -2.3 1.74 -0.432 0 0];
 
 zeroes = roots(b);
 poles = roots(a);
@@ -23,9 +23,9 @@ poles = roots(a);
 % [zeroes, poles, ~] = tf2zpk(b, a);
 
 fprintf('Ex. 1.2.1\n\n');
-fprintf('     0.3137 z^-3 - 0.1537 z^-5\n');
+fprintf('         0.3137 z^2 - 0.1537\n');
 fprintf('-------------------------------------\n');
-fprintf('1 - 2.3 z^-1 + 1.74 z^-2 - 0.432 z^-3\n\n');
+fprintf('z^5 - 2.3 z^4 + 1.74 z^3 - 0.432 z^2\n\n');
 
 fprintf('Zeros:\n');
 disp(zeroes);
@@ -34,13 +34,12 @@ disp(poles);
 
 titl_ = 'Ex. 1.2.1: y[n] z-plane representation (zeros and poles)';
 figure('Name', titl_);
-zplane(b, a); % includes 2 "extra" poles
-% zplane(zeroes, poles);
+zplane(zeroes, poles);
 title(titl_);
 
 %% Ex. 1.2.2
 b = [0 0 0 0.3137 0 -0.1537];
-a = [1 -2.3 1.74 -0.432];
+a = [1 -2.3 1.74 -0.432 0 0];
 
 zeroes_poles = [roots(b)' roots(a)'];
 for i = 1:length(zeroes_poles)
@@ -58,7 +57,7 @@ end;
 
 %% Ex. 1.2.3
 syms z;
-H = (0.3137 * z^-3 - 0.1537 * z^-5) / (1 - 2.3 * z^-1 + 1.74 * z^-2 - 0.432 * z^-3);
+H = (0.3137 * z^2 - 0.1537) / (z^5 - 2.3 * z^4 + 1.74 * z^3 - 0.432 * z^2);
 h = iztrans(H);
 fprintf('Ex. 1.2.3\nSystem''s impulse response, h[n]:\n');
 pretty(h);
@@ -69,10 +68,10 @@ LLIM = 0;
 RLIM = 70;
 
 b = [0 0 0 0.3137 0 -0.1537];
-a = [1 -2.3 1.74 -0.432];
+a = [1 -2.3 1.74 -0.432 0 0];
 
 syms z;
-H = (0.3137 * z^-3 - 0.1537 * z^-5) / (1 - 2.3 * z^-1 + 1.74 * z^-2 - 0.432 * z^-3);
+H = (0.3137 * z^2 - 0.1537) / (z^5 - 2.3 * z^4 + 1.74 * z^3 - 0.432 * z^2);
 h = iztrans(H);
 
 n = LLIM:RLIM;
