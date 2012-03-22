@@ -85,29 +85,32 @@
 
 \noindent pelo que se obtém que
 \begin{equation}
+	\label{eq:tf}
 	G(z) = \frac{0.3137 \, z^{-3} - 0.1537 \, z^{-5}}{1 - 2.3 \, z^{-1} + 1.74 \, z^{-2} - 0.432 \, z^{-3}}
 \end{equation}
 
 \subsection{Exercise 1.2}
-\subsubsection{Exercise 1.2.1}
-TODO
+\subsubsection{Exercise 1.2.1/1.2.2}
+\noindent A localização dos zeros e pólos de um sistema no plano $Z$ fornecem informações relativamente à estabilidade de um sistema. A partir da função de transferência (equação \ref{eq:tf}), é possível obter os zeros e pólos calculando os zeros do numerador e do denonimador, respectivamente. Como tal, obtiveram-se os zeros $\pm 0.7$ e os pólos $[0.6, 0.8, 0.9]$.
 
-% \begin{equation}
-%	x_{1}(t) = 2 \, sin(2 t) \, cos(11 t) + 5 \, cos^2 \, (8t)
-%	\label{eq:origsubst}
-% \end{equation}
+\noindent De seguida apresenta-se a representação dos zeros e pólos no plano $Z$.
+\begin{center}
+	\includegraphics[width=0.65\textwidth]{images/ex1_2_1.png}
+	\captionof{figure}{$y[n]$ z-plane representation (zeros and poles).}
+	\label{fig:ex1_2_1_zplane}
+\end{center}
 
-% \begin{eqnarray}
-% \label{eq:simplification}
-% x_{1}(t) & = & 2 \, sin(2 t) \, cos(11 t) + 5 \, cos^2 \, (8t) \\
-% 	 & = & sin(2 t + 11 t) + sin(2 t - 11 t) + 5 \, cos^2 \, (8t) \\
-% 	 & = & sin(13 t) + sin(- 9 t) + 5 \, cos^2 \, (8t) \\
-% 	 & = & - cos\left(13 t + \frac{\pi}{2}\right) - cos\left(- 9 t + \frac{\pi}{2}\right) + 5 \, cos^2 \, (8t) \\
-% 	 & = & cos\left(13 t + \frac{3 \pi}{2}\right) + cos\left(- 9 t + \frac{3 \pi}{2}\right) + 5 \, cos^2 \, (8t) \\
-% 	 & = & cos\left(13 t + \frac{3 \pi}{2}\right) + cos\left(9 t + \frac{\pi}{2}\right) + 5 \, cos^2 \, (8t) \\
-% 	 & = & cos\left(13 t + \frac{3 \pi}{2}\right) + cos\left(9 t + \frac{\pi}{2}\right) + 5 \left(\frac{1 + cos(2 * 8 t)}{2}\right) \\
-% 	 & = & cos\left(13 t + \frac{3 \pi}{2}\right) + cos\left(9 t + \frac{\pi}{2}\right) + \frac{5}{2} \, cos(0) + \frac{5}{2} \, cos(16 t) \\
-% 	 & = & \frac{5}{2} \, cos(0) + cos\left(9 t + \frac{\pi}{2}\right) + cos\left(13 t + \frac{3 \pi}{2}\right) + \frac{5}{2} \, cos(16 t)
-% \end{eqnarray}
+\noindent Como se pode observar, todos os pólos e raízes estão contidos no círculo de raio unitário. Como tal, este sistema é \textbf{estável}.
+
+\subsubsection{Exercise 1.2.3}
+\noindent Dado que assumimos que
+\begin{equation}
+	G(z) = H(z)|_{\text{condições iniciais nulas}} \\
+\end{equation}
+
+\noindent é possível obter a expressão da resposta a impulso do sistema, $h[n]$, válida para $n \ge 0$, aplicando à função de transferência anteriormente obtida a Transformada Inversa de $Z$ ($\mathcal{Z}^{-1}$). Utilizando a função \texttt{iztrans} do \texttt{MATLAB} obteve-se a expressão
+\begin{equation}
+	h[n] = \mathcal{Z}^{-1}\{G(z)\} = \frac{44573}{31104} \, \delta[n - 1] + \frac{1537}{4320} \, \delta[n - 2] - \frac{1274 \, (\frac{3}{5}) ^ n}{405} - \frac{11767 \, (\frac{4}{5}) ^ n}{2560} + \frac{100397 \, (\frac{9}{10}) ^ n}{21870} + \frac{17644573}{5598720} \, \delta[n]
+\end{equation}
 
 \end{document}

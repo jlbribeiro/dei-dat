@@ -20,9 +20,44 @@ a = [1 -2.3 1.74 -0.432];
 zeroes = roots(b);
 poles = roots(a);
 
-% [zeroes, poles , k] = tf2zpk(b,a);
+% [zeroes, poles, ~] = tf2zpk(b, a);
 
-titl_ = 'Ex. 1.2: ';
+fprintf('Ex. 1.2.1\n\n');
+fprintf('     0.3137 z^-3 - 0.1537 z^-5\n');
+fprintf('-------------------------------------\n');
+fprintf('1 - 2.3 z^-1 + 1.74 z^-2 - 0.432 z^-3\n\n');
+
+fprintf('Zeros:\n');
+disp(zeroes);
+fprintf('Poles:\n');
+disp(poles);
+
+titl_ = 'Ex. 1.2.1: y[n] z-plane representation (zeros and poles)';
 figure('Name', titl_);
-zplane(b, a);
+zplane(b, a); % includes 2 "extra" poles
+% zplane(zeroes, poles);
 title(titl_);
+
+%% Ex. 1.2.2
+b = [0 0 0 0.3137 0 -0.1537];
+a = [1 -2.3 1.74 -0.432];
+
+zeroes_poles = [roots(b)' roots(a)'];
+for i = 1:length(zeroes_poles)
+	if abs(zeroes_poles(i)) > 1
+		i = 0;
+		break;
+	end;
+end;
+
+if i
+	fprintf('Ex. 1.2.2\nThe y[n] system is stable, since every zero and pole is inside the unit circle.\n\n');
+else
+	fprintf('Ex. 1.2.2\nThe y[n] system is unstable, since not every zero and pole is inside the unit circle.\n\n');
+end;
+
+%% Ex. 1.2.3
+syms z;
+H = (0.3137 * z^-3 - 0.1537 * z^-5) / (1 - 2.3 * z^-1 + 1.74 * z^-2 - 0.432 * z^-3);
+h = iztrans(H);
+fprintf(sprintf('Ex. 1.2.3\nSystem''s impulse response, h[n]:\n%s\n\n', char(h)));
