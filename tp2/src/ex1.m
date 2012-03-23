@@ -59,8 +59,7 @@ end;
 syms z;
 H = (0.3137 * z^2 - 0.1537) / (z^5 - 2.3 * z^4 + 1.74 * z^3 - 0.432 * z^2);
 h = iztrans(H);
-fprintf('Ex. 1.2.3\nSystem''s impulse response, h[n]:\n');
-pretty(h);
+fprintf('Ex. 1.2.3\nSystem''s impulse response, h[n]:\n'); pretty(h);
 fprintf('\n\n');
 
 %% Ex. 1.2.4
@@ -89,3 +88,68 @@ plot(h3_n, 'g+');
 hold off;
 title(sprintf(titl_, 'in'));
 legend('h[n] using iztrans', 'h[n] using impz', 'h[n] using dimpulse');
+
+%% Ex. 1.2.5
+syms z;
+H = (0.3137 * z^2 - 0.1537) / (z^5 - 2.3 * z^4 + 1.74 * z^3 - 0.432 * z^2);
+U = 1 / (1 - z^-1);
+
+Y = U * H;
+y = iztrans(Y);
+
+fprintf('System''s unit step response:'); pretty(y);
+
+%% Ex. 1.2.6
+LLIM = 0;
+RLIM = 70;
+
+b = [0 0 0 0.3137 0 -0.1537];
+a = [1 -2.3 1.74 -0.432 0 0];
+
+syms z;
+H = (0.3137 * z^2 - 0.1537) / (z^5 - 2.3 * z^4 + 1.74 * z^3 - 0.432 * z^2);
+U = 1 / (1 - z^-1);
+
+Y = U * H;
+y = iztrans(Y);
+
+n = LLIM:RLIM;
+
+y1_n = subs(y, 'n', n);
+y2_n = dstep(b, a, length(n) - 1);
+
+titl_ = 'Ex. 1.2.6: y[n] unit step response, n %s [0, 70], using U(z) and iztrans (blue) and dstep (red)';
+figure('Name', sprintf(titl_, '∈'));
+hold all;
+stairs(y1_n(1:RLIM));
+plot(y2_n, 'ro');
+hold off;
+title(sprintf(titl_, 'in'));
+legend('y[n] unit step response using U(z) and iztrans', 'y[n] unit step response using dstep');
+
+%% Ex. 1.2.7
+LLIM = 0;
+RLIM = 70;
+
+syms z; syms n;
+H = (0.3137 * z^2 - 0.1537) / (z^5 - 2.3 * z^4 + 1.74 * z^3 - 0.432 * z^2);
+
+fprintf('Ex. 1.2.7\n');
+x_expr = input('Insert an expression for x[n] [e.g.: 4 * (heaviside(n - 3) - heaviside(n - 9))]: ');
+
+x = sym(x_expr);
+
+X = ztrans(x);
+
+Y = X * H;
+y = iztrans(Y);
+
+n = LLIM:RLIM;
+
+y_n = subs(y, 'n', n);
+titl_ = sprintf('Ex. 1.2.7: y[n] response to the specific input (%s), n %%s [0, 70]', char(x_expr));
+figure('Name', sprintf(titl_, '∈'));
+stairs(n, y_n);
+title(sprintf(titl_, 'in'));
+
+fprintf(sprintf('The y[n] system''s response to %s:\n', char(x_expr))); pretty(y);

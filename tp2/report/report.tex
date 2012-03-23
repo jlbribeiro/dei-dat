@@ -116,7 +116,7 @@
 	h[n] = \mathcal{Z}^{-1}\{G(z)\} = \frac{44573}{31104} \, \delta[n - 1] + \frac{1537}{4320} \, \delta[n - 2] - \frac{1274 \, (\frac{3}{5}) ^ n}{405} - \frac{11767 \, (\frac{4}{5}) ^ n}{2560} + \frac{100397 \, (\frac{9}{10}) ^ n}{21870} + \frac{17644573}{5598720} \, \delta[n]
 \end{equation}
 
-\subsection{Exercise 1.2.4}
+\subsubsection{Exercise 1.2.4}
 \noindent Em seguida apresenta-se a resposta a impulso do sistema, segundo a expressão obtida em \emph{\nameref{subsubsec:ex1_2_3}} (azul) e segundo as funções do \texttt{MATLAB} \texttt{impz} (vermelho) e \texttt{dimpulse} (verde).
 
 \begin{center}
@@ -125,7 +125,44 @@
 	\label{fig:ex1_2_4_zplane}
 \end{center}
 
-\subsection{Exercise 1.2.5}
-TODO
+\subsubsection{Exercise 1.2.5}
+\label{subsubsec:ex_1_2_5}
+\noindent Considerando que é conhecida a expressão de $H(z)$, é possível obter a resposta do sistema ao degrau unitário ($u[n]$) usando a igualdade
+\begin{equation}
+	Y(z) = X(z) \, H(z)
+\end{equation}
+
+\noindent onde $X(z)$ deverá ser substituída por $U(z)$, Transformada de $Z$ de $u[n]$. $U(z)$ é dada por
+\begin{equation}
+	U(z) = \frac{1}{1 - z^{-1}}
+\end{equation}
+
+\noindent O resultado desse produto dará a Transformada de $Z$ da resposta do sistema ao degrau unitário. Isto é,
+\begin{eqnarray}
+	Y(z) & = & U(z) \, H(z) \\
+	& = & \frac{1}{1 - z^{-1}} \, \frac{0.3137 \, z^{2} - 0.1537}{z^{5} - 2.3 \, z^{4} + 1.74 \, z^{3} - 0.432 \, z^{2}}
+\end{eqnarray}
+
+\noindent Como queremos a expressão da resposta do sistema, tem de ser aplicada a Transformada Inversa de $Z$, $\mathcal{Z}^{-1}$. Utilizando a função \texttt{iztrans} do \texttt{MATLAB}:
+\begin{equation}
+	\label{eq:ex_1_2_5_unit_step_response}
+	y[n] = \mathcal{Z}^{-1}\{Y(z)\} = \frac{637 \, \left(\frac{3}{5}\right)^n}{135} - \frac{1537 \, \delta[n - 1]}{4320} + \frac{11767 \, \left(\frac{4}{5}\right)^n}{640} - \frac{100397 \, \left(\frac{9}{10}\right)^n}{2430} - \frac{278197 \, \delta[n]}{155520} + 20
+\end{equation}
+
+\subsubsection{Exercise 1.2.6}
+\noindent Em seguida apresenta-se a resposta do sistema ao degrau unitário, segundo a equação (\ref{eq:ex_1_2_5_unit_step_response}) (azul) e segundo a função do \texttt{MATLAB} \texttt{dstep} (vermelho).
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex1_2_6.png}
+	\captionof{figure}{$y[n]$ unit step response, $n \in [0, 70]$, using $U(z)$ and \texttt{iztrans} (blue) and \texttt{dstep} (red).}
+	\label{fig:ex1_2_6}
+\end{center}
+
+\subsubsection{Exercise 1.2.7}
+\noindent Para computar a resposta do sistema para uma dada entrada, considera-se que é dada segundo o formato simbólico do \texttt{MATLAB}. Calcula-se a sua Transformada de $Z$, que por convolução com a função de transferência, origina a Transformada de $Z$ dessa resposta. Após isso, em semelhança a \nameref{subsubsec:ex_1_2_5}, é aplicada a Transformada Inversa de $Z$ ao resultado, o que origina a expressão da resposta do sistema para uma dada entrada. Apresenta-se o resultado para a expressão \begin{center}\texttt{4 * (heaviside(n - 3) - heaviside(n - 9))}\end{center}
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex1_2_7.png}
+	\captionof{figure}{$y[n]$ response to the specific input (\texttt{4 * (heaviside(n - 3) - heaviside(n - 9))}), $n \in [0, 70]$.}
+	\label{fig:ex1_2_7}
+\end{center}
 
 \end{document}
