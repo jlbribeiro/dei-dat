@@ -93,7 +93,7 @@
 
 \subsection{Exercise 1.2}
 \subsubsection{Exercise 1.2.1/1.2.2}
-\noindent A localização dos zeros e pólos de um sistema no plano $Z$ fornecem informações relativamente à estabilidade de um sistema. A partir da função de transferência (equação \ref{eq:tf}), é possível obter os zeros e pólos calculando os zeros do numerador e do denonimador, respectivamente. Como tal, obtiveram-se os zeros $\pm 0.7$ e os pólos $[0, 0, 0.6, 0.8, 0.9]$.
+\noindent A localização dos zeros e pólos de um sistema no plano $Z$ fornece informações relativamente à estabilidade de um sistema. A partir da função de transferência (equação \ref{eq:tf}), é possível obter os zeros e pólos calculando os zeros do numerador e do denonimador, respectivamente. Como tal, obtiveram-se os zeros $\pm 0.7$ e os pólos $[0, 0, 0.6, 0.8, 0.9]$.
 
 \noindent De seguida apresenta-se a representação dos zeros e pólos no plano $Z$.
 \begin{center}
@@ -129,16 +129,19 @@
 \label{subsubsec:ex_1_2_5}
 \noindent Considerando que é conhecida a expressão de $H(z)$, é possível obter a resposta do sistema ao degrau unitário ($u[n]$) usando a igualdade
 \begin{equation}
+	\label{eq:ex_1_2_5_system_response}
 	Y(z) = X(z) \, H(z)
 \end{equation}
 
 \noindent onde $X(z)$ deverá ser substituída por $U(z)$, Transformada de $Z$ de $u[n]$. $U(z)$ é dada por
 \begin{equation}
+	\label{eq:ex_1_2_5_unit_step_response_ztrans}
 	U(z) = \frac{1}{1 - z^{-1}}
 \end{equation}
 
 \noindent O resultado desse produto dará a Transformada de $Z$ da resposta do sistema ao degrau unitário. Isto é,
 \begin{eqnarray}
+	\label{eqnarr:ex_1_2_5_unit_step_response_ztrans_replace}
 	Y(z) & = & U(z) \, H(z) \\
 	& = & \frac{1}{1 - z^{-1}} \, \frac{0.3137 \, z^{2} - 0.1537}{z^{5} - 2.3 \, z^{4} + 1.74 \, z^{3} - 0.432 \, z^{2}}
 \end{eqnarray}
@@ -158,11 +161,50 @@
 \end{center}
 
 \subsubsection{Exercise 1.2.7}
-\noindent Para computar a resposta do sistema para uma dada entrada, considera-se que é dada segundo o formato simbólico do \texttt{MATLAB}. Calcula-se a sua Transformada de $Z$, que por convolução com a função de transferência, origina a Transformada de $Z$ dessa resposta. Após isso, em semelhança a \nameref{subsubsec:ex_1_2_5}, é aplicada a Transformada Inversa de $Z$ ao resultado, o que origina a expressão da resposta do sistema para uma dada entrada. Apresenta-se o resultado para a expressão \begin{center}\texttt{4 * (heaviside(n - 3) - heaviside(n - 9))}\end{center}
+\noindent Para computar a resposta do sistema para uma dada entrada, considera-se que é dada segundo o formato simbólico do \texttt{MATLAB}. Calcula-se a sua Transformada de $Z$, que por convolução com a função de transferência, origina a Transformada de $Z$ dessa resposta. Após isso, em semelhança a \nameref{subsubsec:ex_1_2_5}, é aplicada a Transformada Inversa de $Z$ ao resultado, o que origina a expressão da resposta do sistema para uma dada entrada.
+
+\subsubsection{Exercise 1.2.8}
+\noindent Em seguida apresenta-se a resposta do sistema para uma dada entrada, segundo a equação (\ref{eq:ex_1_2_5_system_response}) (após a aplicação da Transformada de $Z$ sobre essa entrada) (azul) e segundo as funções do \texttt{MATLAB} \texttt{filter} (vermelho) and \texttt{dlsim} (verde).
 \begin{center}
-	\includegraphics[width=0.70\textwidth]{images/ex1_2_7.png}
-	\captionof{figure}{$y[n]$ response to the specific input (\texttt{4 * (heaviside(n - 3) - heaviside(n - 9))}), $n \in [0, 70]$.}
-	\label{fig:ex1_2_7}
+	\includegraphics[width=0.70\textwidth]{images/ex1_2_8.png}
+	\captionof{figure}{$y[n]$ response to the specific input (\texttt{4 * (heaviside(n - 3) - heaviside(n - 9))} using \texttt{iztrans} over convolution (blue), \texttt{filter} (red) and \texttt{dlsim} (green), $n \in [0, 70]$}
+	\label{fig:ex1_2_8}
 \end{center}
+
+\subsubsection{Exercise 1.2.9}
+\noindent Em seguida apresentam-se os gráficos da resposta do sistema em frequência, $H(\Omega)$, para $\Omega \in [0, \pi] rad$, em amplitude (em cima, em decibéis ($dB$)) e em fase (em baixo, em graus).
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex1_2_9.png}
+	\captionof{figure}{$y[n]$ frequency response in amplitude (dB) and phase (deg), $\Omega \in [0, \pi] \, rad$.}
+	\label{fig:ex1_2_9}
+\end{center}
+
+\subsubsection{Exercise 1.2.10}
+\noindent Dada a equação do Teorema do Valor Final
+\begin{equation}
+	y[\infty] = \lim_{z \to 1} \, (1 - z^{-1}) \, Y(z)
+\end{equation}
+
+\noindent e substituindo Y(z) pela expressão obtida na equação (\ref{eqnarr:ex_1_2_5_unit_step_response_ztrans_replace}), assumindo a igualdade da equação (\ref{eq:ex_1_2_5_unit_step_response_ztrans}) obtém-se que
+\begin{eqnarray}
+	y[\infty] & = & \lim_{z \to 1} \, (1 - z^{-1}) \, \frac{1}{1 - z^{-1}} \, H(z) \\
+	& = & \lim_{z \to 1} \, H(z)
+\end{eqnarray}
+
+\noindent Após a substituição pela função de transferência (assumindo condições iniciais nulas), obtém-se que
+\begin{eqnarray}
+	\lim_{z \to 1} \, H(z) & = & \frac{0.3137 \, z^{2} - 0.1537}{z^{5} - 2.3 \, z^{4} + 1.74 \, z^{3} - 0.432 \, z^{2}} \\
+	& = & \frac{0.3137 * 1^{2} - 0.1537}{1^{5} - 2.3 * 1^{4} + 1.74 * 1^{3} - 0.432 * 1^{2}} \\
+	& = & \frac{0.3137 - 0.1537}{1 - 2.3 + 1.74 - 0.432} \\
+	& = & \frac{0.16}{0.008} \\
+	& = & 20
+\end{eqnarray}
+
+\noindent Utilizando a equação \ref{eq:ex_1_2_5_unit_step_response}, obtida em \emph{\nameref{subsubsec:ex_1_2_5}}, obtém-se esse mesmo valor:
+\begin{eqnarray}
+	y[\infty] & = & \lim_{n \to \infty} \, \frac{637 \, \left(\frac{3}{5}\right)^n}{135} - \frac{1537 \, \delta[n - 1]}{4320} + \frac{11767 \, \left(\frac{4}{5}\right)^n}{640} - \frac{100397 \, \left(\frac{9}{10}\right)^n}{2430} - \frac{278197 \, \delta[n]}{155520} + 20 \\
+	& = & \frac{637 \, \left(\frac{3}{5}\right)^\infty}{135} - \frac{1537 \, \delta[\infty - 1]}{4320} + \frac{11767 \, \left(\frac{4}{5}\right)^\infty}{640} - \frac{100397 \, \left(\frac{9}{10}\right)^\infty}{2430} - \frac{278197 \, \delta[\infty]}{155520} + 20 \\
+	& = & 20
+\end{eqnarray}
 
 \end{document}
