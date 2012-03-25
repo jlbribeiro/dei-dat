@@ -35,30 +35,35 @@ figure('Name', titl_);
 zplane(zeroes, poles);
 title(titl_);
 
+fprintf('Press ENTER to continue.\n\n'); pause();
+
 %% Ex. 1.2.2
 b = [0 0 0 0.3137 0 -0.1537];
 a = [1 -2.3 1.74 -0.432 0 0];
 
 zeroes_poles = [roots(b)' roots(a)'];
-for i = 1:length(zeroes_poles)
-	if abs(zeroes_poles(i)) > 1
-		i = 0;
+for i_ = 1:length(zeroes_poles)
+	if abs(zeroes_poles(i_)) > 1
+		i_ = 0;
 		break;
 	end;
 end;
 
-if i
+if i_
 	fprintf('Ex. 1.2.2\nThe y[n] system is stable, since every zero and pole is inside the unit circle.\n\n');
 else
 	fprintf('Ex. 1.2.2\nThe y[n] system is unstable, since not every zero and pole is inside the unit circle.\n\n');
 end;
+
+fprintf('Press ENTER to continue.\n\n'); pause();
 
 %% Ex. 1.2.3
 syms z;
 H = (0.3137 * z^2 - 0.1537) / (z^5 - 2.3 * z^4 + 1.74 * z^3 - 0.432 * z^2);
 h = iztrans(H);
 fprintf('Ex. 1.2.3\nSystem''s impulse response, h[n]:\n'); pretty(h);
-fprintf('\n\n');
+
+fprintf('\n\nPress ENTER to continue.\n\n'); pause();
 
 %% Ex. 1.2.4
 LLIM = 0;
@@ -84,8 +89,11 @@ stairs(h1_n);
 plot(h2_n(1:RLIM), 'ro');
 plot(h3_n, 'g+');
 hold off;
-title(sprintf(titl_, 'in'));
+title(sprintf(titl_, '\in'));
 legend('h[n] using iztrans', 'h[n] using impz', 'h[n] using dimpulse');
+fprintf('Ex. 1.2.4 (plotted)\n');
+
+fprintf('Press ENTER to continue.\n\n'); pause();
 
 %% Ex. 1.2.5
 syms z;
@@ -95,7 +103,10 @@ U = 1 / (1 - z^-1);
 Y = U * H;
 y = iztrans(Y);
 
+fprintf('Ex. 1.2.5\n');
 fprintf('System''s unit step response:'); pretty(y);
+
+fprintf('\n\nPress ENTER to continue.\n\n'); pause();
 
 %% Ex. 1.2.6
 LLIM = 0;
@@ -122,8 +133,11 @@ hold all;
 stairs(y1_n(1:RLIM));
 plot(y2_n, 'ro');
 hold off;
-title(sprintf(titl_, 'in'));
+title(sprintf(titl_, '\in'));
 legend('y[n] unit step response using U(z) and iztrans', 'y[n] unit step response using dstep');
+
+fprintf('Ex. 1.2.6 (plotted)\n');
+fprintf('Press ENTER to continue.\n\n'); pause();
 
 %% Ex. 1.2.7
 syms z;
@@ -143,6 +157,8 @@ Y = X * H;
 y = iztrans(Y);
 
 fprintf(sprintf('The y[n] system''s response to %s:\n', char(x_expr))); pretty(y);
+
+fprintf('\n\nPress ENTER to continue.\n\n'); pause();
 
 %% Ex. 1.2.8
 LLIM = 0;
@@ -184,8 +200,10 @@ stairs(n, y1_n);
 plot(y2_n, 'ro');
 plot(y3_n, 'g+');
 hold off;
-title(sprintf(titl_, 'in'));
+title(sprintf(titl_, '\in'));
 legend('y[n] response to the specific input using iztrans over convolution', 'y[n] response to the specific input using filter', 'y[n] response to the specific input using dlsim');
+
+fprintf('Press ENTER to continue.\n\n'); pause();
 
 %% Ex. 1.2.9
 b = [0 0 0 0.3137 0 -0.1537];
@@ -198,11 +216,14 @@ titl_ = 'y[n] frequency response in %s, %s %s [0, %s] rad';
 figure('Name', sprintf('Ex. 1.2.9: %s', sprintf(titl_, 'amplitude (dB) and phase (deg)', 'Ω', '∈', 'π')));
 subplot(2, 1, 1);
 plot(db(abs(H_w)), 'b');
-title(sprintf(titl_, 'amplitude (dB)', 'w', 'in', 'pi'));
+title(sprintf(titl_, 'amplitude (dB)', '\Omega', '\in', '\pi'));
 
 subplot(2, 1, 2);
 plot(unwrap(rad2deg(angle(H_w))), 'b');
-title(sprintf(titl_, 'phase (deg)', 'w', 'in', 'pi'));
+title(sprintf(titl_, 'phase (deg)', '\Omega', '\in', '\pi'));
+
+fprintf('Ex. 1.2.9 (plotted)\n');
+fprintf('Press ENTER to continue.\n\n'); pause();
 
 %% Ex. 1.2.10
 b = [0 0 0 0.3137 0 -0.1537];
