@@ -273,12 +273,13 @@
 \end{center}
 
 \subsubsection{Exercise 2.2.3}
+\label{subsubsec:ex_2_2_3}
 \noindent Apresentam-se de seguida os coeficientes da Série de Fourier Trigonométrica, $C_m$, bem como as fases, $\theta_m$, para o sinal
 \[
 	x(t) = 1 + 2 \, sin\left(12 \, \pi \, t + \frac{\pi}{4}\right) \, cos(21 \, \pi \, t)
 \]
 
-\noindent para $m$ máximo de $100$. Após a simplificação da expressão, i. e.
+\noindent para $m$ máximo de $100$. Após a simplificação da expressão (ver \emph{\nameref{subsec:ex_2_3}}), i. e.
 \[
 	x(t) = cos(0) + cos\left(33 \, \pi \, t + \frac{7 \pi}{4}\right) + cos\left(9 \, \pi \, t + \frac{\pi}{4}\right)
 \]
@@ -306,12 +307,13 @@
 \end{center}
 
 \subsubsection{Exercise 2.2.4}
+\label{subsubsec:ex_2_2_4}
 \noindent Apresentam-se de seguida os coeficientes da Série de Fourier Trigonométrica, $C_m$, bem como as fases, $\theta_m$, para o sinal
 \[
 	x(t) = -2 + 4 \, cos\left(4 \, t + \frac{\pi}{3}\right) - 2 \, sin(10 \, t)
 \]
 
-\noindent para $m$ máximo de $100$. Após a simplificação da expressão, i. e.
+\noindent para $m$ máximo de $100$. Após a simplificação da expressão (ver \emph{\nameref{subsec:ex_2_3}}), i. e.
 \[
 	x(t) = 2 \, cos(\pi) + 4 \, cos\left(4 \, t + \frac{\pi}{3}\right) + 2 \, cos\left(10 \, t + \frac{\pi}{2}\right)
 \]
@@ -337,5 +339,115 @@
 	\captionof{figure}{Complex Fourier Series $c_m$ coefficients for $m \in [-100, 100]$, represented in amplitude (above) and phase (below).}
 	\label{fig:ex2_2_4_complex_cm}
 \end{center}
+
+\subsection{Exercise 2.3}
+\noindent Para obter os coeficientes não-nulos da Série de Fourier Trigonométrica é útil analisar a expressão do sinal simplificada, isto é, segundo a forma
+\begin{equation}
+x_{1}(t) = \sum_{i} C_{i} \, cos(\omega_{i} t + \theta_{i})
+\end{equation}
+
+\subsubsection{\nameref{subsubsec:ex_2_2_3} Analysis}
+\noindent Apresenta-se a simplificação da expressão da alínea \emph{\nameref{subsubsec:ex_2_2_3}}.
+\begin{eqnarray}
+	x(t) & = & 1 + 2 \, sin\left(12 \, \pi \, t + \frac{\pi}{4}\right) \, cos(21 \, \pi \, t) \\
+	& = & 1 + sin\left(12 \, \pi \, t + \frac{\pi}{4} + 21 \, \pi \, t\right) + sin\left(12 \, \pi \, t + \frac{\pi}{4} - 21 \, \pi \, t\right) \\
+	& = & 1 + sin\left(33 \, \pi \, t + \frac{\pi}{4}\right) + sin\left(-9 \, \pi \, t + \frac{\pi}{4}\right) \\
+	& = & 1 + cos\left(\frac{\pi}{2} - \left(33 \, \pi \, t + \frac{\pi}{4}\right)\right) + cos\left(\frac{\pi}{2} - \left(-9 \, \pi \, t + \frac{\pi}{4}\right)\right) \\
+	& = & 1 + cos\left(- 33 \, \pi \, t + \frac{\pi}{4}\right) + cos\left(9 \, \pi \, t + \frac{\pi}{4}\right) \\
+	& = & cos(0) + cos\left(9 \, \pi \, t + \frac{\pi}{4}\right) + cos\left(33 \, \pi \, t + \frac{7 \, \pi}{4}\right)
+\end{eqnarray}
+
+\noindent A frequência fundamental é o máximo divisor comum entre as várias frequências angulares. Dado que a frequência angular designa $\omega$ numa expressão do tipo $cos(\omega \, t + \theta)$, a frequência fundamental será
+\begin{equation}
+	w_0 = gcd(0, 9 \pi, 33 \pi) = 3 \pi
+\end{equation}
+
+\noindent Obtém-se a partir dela o período fundamental (utilizado na alínea anterior para o \emph{plotting}).
+\begin{equation}
+	T_0 = \frac{2 \pi}{w_0} = \frac{2 \pi}{3 \pi} = \frac{2}{3} \, s
+\end{equation}
+
+\noindent Obtêm-se assim os coeficientes não-nulos da Série de Fourier: $\left[\frac{0}{3 \pi}, \frac{9 \pi}{3 \pi}, \frac{33 \pi}{3 \pi}\right] = [0, 3, 11]$.
+
+\noindent A tabela final:
+
+\begin{center}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		$\mathbf{m}$ & 0 & 3 & 11 \\
+		\hline
+		$\mathbf{C_m}$ & 1 & 1 & 1 \\
+		\hline
+		$\mathbf{\theta_m}$ & 0 & $\frac{\pi}{4}$ & $\frac{7 \pi}{4}$ \\
+		\hline
+	\end{tabular}
+	\label{tab:ex_2_1_3}
+\end{center}
+
+\noindent Estes resultados são coerentes com a imagem (\ref{fig:ex2_2_3_cm_tm}) (considere-se que $cos\left(\frac{7 \pi}{4}\right) = cos\left(-\frac{\pi}{4}\right)$).
+
+\subsubsection{\nameref{subsubsec:ex_2_2_4} Analysis}
+\noindent Apresenta-se a simplificação da expressão da alínea \emph{\nameref{subsubsec:ex_2_2_4}}.
+\begin{eqnarray}
+	x(t) & = & -2 + 4 \, cos\left(4 \, t + \frac{\pi}{3}\right) - 2 \, sin(10 \, t) \\
+	& = & -2 + 4 \, cos\left(4 \, t + \frac{\pi}{3}\right) - 2 \, cos\left(\frac{\pi}{2} - 10 \, t\right) \\
+	& = & -2 + 4 \, cos\left(4 \, t + \frac{\pi}{3}\right) + 2 \, cos\left(\pi - \left(\frac{\pi}{2} - 10 \, t\right)\right) \\
+	& = & 2 \, cos(\pi) + 4 \, cos\left(4 \, t + \frac{\pi}{3}\right) + 2 \, cos\left(10 \, t + \frac{\pi}{2}\right)
+\end{eqnarray}
+
+\noindent A frequência fundamental é o máximo divisor comum entre as várias frequências angulares. Dado que a frequência angular designa $\omega$ numa expressão do tipo $cos(\omega \, t + \theta)$, a frequência fundamental será
+\begin{equation}
+	w_0 = gcd(0, 4, 10) = 2
+\end{equation}
+
+\noindent Obtém-se a partir dela o período fundamental (utilizado na alínea anterior para o \emph{plotting}).
+\begin{equation}
+	T_0 = \frac{2 \pi}{w_0} = \frac{2 \pi}{2} = \pi \, s
+\end{equation}
+
+\noindent Obtêm-se assim os coeficientes não-nulos da Série de Fourier: $\left[\frac{0}{2}, \frac{4}{2}, \frac{10}{2}\right] = [0, 2, 5]$.
+
+\noindent A tabela final:
+
+\begin{center}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		$\mathbf{m}$ & 0 & 2 & 5 \\
+		\hline
+		$\mathbf{C_m}$ & 2 & 4 & 2 \\
+		\hline
+		$\mathbf{\theta_m}$ & $\pi$ & $\frac{\pi}{3}$ & $\frac{\pi}{2}$ \\
+		\hline
+	\end{tabular}
+	\label{tab:ex_2_1_3}
+\end{center}
+
+\noindent Estes resultados são coerentes com a imagem (\ref{fig:ex2_2_4_cm_tm}) (considere-se que $cos(\pi) = cos(-\pi)$).
+
+\section{Exercise 3}
+\noindent TODO %%% TODO
+
+\section{Exercise 4}
+\noindent TODO %%% TODO
+
+\section{Attachments}
+\subsection{Trigonometric identities}
+\label{subsec:trigident}
+As simplicações das alíneas \emph{\nameref{subsubsec:ex_2_2_3}} e \emph{\nameref{subsubsec:ex_2_2_4}} fazem uso das seguintes igualdades:
+\begin{equation}
+sin(\theta) \, cos(\varphi) = \frac{cos(\theta - \varphi) + cos(\theta + \varphi)}{2}
+\end{equation}
+
+\begin{equation}
+cos\left(\theta + \frac{\pi}{2}\right) = -sin(\theta)
+\end{equation}
+
+\begin{equation}
+cos(\theta + \pi) = -cos(\theta)
+\end{equation}
+
+\begin{equation}
+cos(-\theta) = cos(\theta)
+\end{equation}
 
 \end{document}
