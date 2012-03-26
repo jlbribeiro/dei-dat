@@ -91,6 +91,7 @@
 	G(z) = \frac{0.3137 \, z^{2} - 0.1537}{z^{5} - 2.3 \, z^{4} + 1.74 \, z^{3} - 0.432 \, z^{2}}
 \end{equation}
 
+\clearpage
 \subsection{Exercise 1.2}
 \subsubsection{Exercise 1.2.1/1.2.2}
 \noindent A localização dos zeros e pólos de um sistema no plano $Z$ fornece informações relativamente à estabilidade de um sistema. A partir da função de transferência (equação \ref{eq:tf}), é possível obter os zeros e pólos calculando os zeros do numerador e do denonimador, respectivamente. Como tal, obtiveram-se os zeros $\pm 0.7$ e os pólos $[0, 0, 0.6, 0.8, 0.9]$.
@@ -152,6 +153,7 @@
 	y[n] = \mathcal{Z}^{-1}\{Y(z)\} = \frac{637 \, \left(\frac{3}{5}\right)^n}{135} - \frac{1537 \, \delta[n - 1]}{4320} + \frac{11767 \, \left(\frac{4}{5}\right)^n}{640} - \frac{100397 \, \left(\frac{9}{10}\right)^n}{2430} - \frac{278197 \, \delta[n]}{155520} + 20
 \end{equation}
 
+\clearpage
 \subsubsection{Exercise 1.2.6}
 \noindent Em seguida apresenta-se a resposta do sistema ao degrau unitário, segundo a equação (\ref{eq:ex_1_2_5_unit_step_response}) (azul) e segundo a função do \texttt{MATLAB} \texttt{dstep} (vermelho).
 \begin{center}
@@ -163,6 +165,7 @@
 \subsubsection{Exercise 1.2.7}
 \noindent Para computar a resposta do sistema para uma dada entrada, considera-se que é dada segundo o formato simbólico do \texttt{MATLAB}. Calcula-se a sua Transformada de $Z$, que por convolução com a função de transferência, origina a Transformada de $Z$ dessa resposta. Após isso, em semelhança a \nameref{subsubsec:ex_1_2_5}, é aplicada a Transformada Inversa de $Z$ ao resultado, o que origina a expressão da resposta do sistema para uma dada entrada.
 
+\clearpage
 \subsubsection{Exercise 1.2.8}
 \noindent Em seguida apresenta-se a resposta do sistema para uma dada entrada, segundo a equação (\ref{eq:ex_1_2_5_system_response}) (após a aplicação da Transformada de $Z$ sobre essa entrada) (azul) e segundo as funções do \texttt{MATLAB} \texttt{filter} (vermelho) and \texttt{dlsim} (verde).
 \begin{center}
@@ -207,6 +210,7 @@
 	& = & 20
 \end{eqnarray}
 
+\clearpage
 \section{Exercise 2}
 \subsection{Exercise 2.1}
 \subsubsection{Exercise 2.1.1 to Exercise 2.1.5}
@@ -226,6 +230,7 @@
 \noindent A amplitude e a fase são obtidas recorrendo às funções \texttt{abs} e \texttt{angle}.
 
 \subsection{Exercise 2.2}
+\label{subsec:ex_2_2}
 \subsubsection{Exercise 2.2.1}
 \noindent Apresentam-se de seguida os coeficientes da Série de Fourier Trigonométrica, $C_m$, bem como as fases, $\theta_m$, para uma \textbf{onda quadrada de período} $\mathbf{2 \pi s}$, para $m$ máximo de $100$.
 
@@ -235,7 +240,8 @@
 	\label{fig:ex2_2_1_cm_tm}
 \end{center}
 
-\noindent Abaixo seguem as aproximações sucessivas do sinal através da Série de Fourier para $m \in [0, 1, 3, 5, 10, 50 e 100]$.
+\clearpage
+\noindent Abaixo seguem as aproximações sucessivas do sinal através da Série de Fourier para $m \in [0, 1, 3, 5, 10, 50, 100]$.
 \begin{center}
 	\includegraphics[width=0.70\textwidth]{images/ex2_2_1_approx.png}
 	\captionof{figure}{Fourier Series Signal Approximation for $m\in [0, 1, 3, 5, 10, 50, 100]$}
@@ -251,6 +257,7 @@
 
 \noindent Os coeficientes obtidos são o que seria de esperar: é extremamente complexa a aproximação de uma onda quadrada segundo um conjunto de harmónicos. Daí os vários coeficientes não-nulos , com especial ênfase na frequência 0.
 
+\clearpage
 \subsubsection{Exercise 2.2.2}
 \noindent Apresentam-se de seguida os coeficientes da Série de Fourier Trigonométrica, $C_m$, bem como as fases, $\theta_m$, para uma \textbf{onda em dente de serra de período} $\mathbf{2 \pi s}$, para $m$ máximo de $100$.
 
@@ -267,6 +274,7 @@
 	\label{fig:ex2_2_2_approx}
 \end{center}
 
+\clearpage
 \noindent Abaixo apresentam-se a amplitude e fase dos valores dos coeficientes da Série de Fourier Complexa, $c_m$, para $m \in [-100, 100]$, obtidos a partir dos valores de $C_m$ e $\theta_m$ da correspondente Série de Fourier Trigonométrica.
 \begin{center}
 	\includegraphics[width=0.70\textwidth]{images/ex2_2_2_complex_cm.png}
@@ -277,17 +285,19 @@
 \subsubsection{Exercise 2.2.3}
 \label{subsubsec:ex_2_2_3}
 \noindent Apresentam-se de seguida os coeficientes da Série de Fourier Trigonométrica, $C_m$, bem como as fases, $\theta_m$, para o sinal
-\[
+\begin{equation}
 	x(t) = 1 + 2 \, sin\left(12 \, \pi \, t + \frac{\pi}{4}\right) \, cos(21 \, \pi \, t)
-\]
+\end{equation}
 
 \noindent para $m$ máximo de $100$. Após a simplificação da expressão (ver \emph{\nameref{subsec:ex_2_3}}), i. e.
-\[
+\begin{equation}
 	x(t) = cos(0) + cos\left(33 \, \pi \, t + \frac{7 \pi}{4}\right) + cos\left(9 \, \pi \, t + \frac{\pi}{4}\right)
-\]
+	\label{eq:ex_2_2_3}
+\end{equation}
 
 \noindent é possível concluir que o período fundamental da função é $\frac{2}{3} \, s$ (já que a frequência angular fundamental é $3 \, \pi \, rad/s$).
 
+\clearpage
 \begin{center}
 	\includegraphics[width=0.70\textwidth]{images/ex2_2_3_cm_tm.png}
 	\captionof{figure}{Trigonometric Fourier Series coefficients, $C_m$, and sinusoidal phase, $\theta_m$, for $m\_max = 100$}
@@ -311,14 +321,15 @@
 \subsubsection{Exercise 2.2.4}
 \label{subsubsec:ex_2_2_4}
 \noindent Apresentam-se de seguida os coeficientes da Série de Fourier Trigonométrica, $C_m$, bem como as fases, $\theta_m$, para o sinal
-\[
+\begin{equation}
 	x(t) = -2 + 4 \, cos\left(4 \, t + \frac{\pi}{3}\right) - 2 \, sin(10 \, t)
-\]
+\end{equation}
 
 \noindent para $m$ máximo de $100$. Após a simplificação da expressão (ver \emph{\nameref{subsec:ex_2_3}}), i. e.
-\[
+\begin{equation}
 	x(t) = 2 \, cos(\pi) + 4 \, cos\left(4 \, t + \frac{\pi}{3}\right) + 2 \, cos\left(10 \, t + \frac{\pi}{2}\right)
-\]
+	\label{eq:ex_2_2_4}
+\end{equation}
 
 \noindent é possível concluir que o período fundamental da função é $\pi \, s$ (já que a frequência angular fundamental é $2 \, rad/s$).
 
@@ -328,6 +339,7 @@
 	\label{fig:ex2_2_4_cm_tm}
 \end{center}
 
+\clearpage
 \noindent Abaixo seguem as aproximações sucessivas do sinal através da Série de Fourier para $m \in [0, 1, 3, 5, 10, 50, 100]$.
 \begin{center}
 	\includegraphics[width=0.70\textwidth]{images/ex2_2_4_approx.png}
@@ -342,6 +354,7 @@
 	\label{fig:ex2_2_4_complex_cm}
 \end{center}
 
+\clearpage
 \subsection{Exercise 2.3}
 \label{subsec:ex_2_3}
 \noindent Para obter os coeficientes não-nulos da Série de Fourier Trigonométrica é útil analisar a expressão do sinal simplificada, isto é, segundo a forma
@@ -427,16 +440,131 @@ x_{1}(t) = \sum_{i} C_{i} \, cos(\omega_{i} t + \theta_{i})
 
 \noindent Estes resultados são coerentes com a imagem (\ref{fig:ex2_2_4_cm_tm}) (considere-se que $cos(\pi) = cos(-\pi)$).
 
+\subsection{Exercise 2.4}
+\noindent Não efectuado por falta de tempo.
+
+\clearpage
 \section{Exercise 3}
-\noindent TODO %%% TODO
+\subsection{Exercise 3.2}
+\noindent Para as seguintes alíneas, foram utilizados os coeficientes e fases da Série de Fourier Trigonométrica já calculados em \emph{\nameref{subsec:ex_2_2}}, como referência para a escolha dos filtros.
 
+\subsubsection{Exercise 3.2.1}
+\noindent Para uma onda quadrada unitária de período $2 \pi$, sobre a qual é aplicada ruído aleatório, escolhemos um filtro \textbf{passa-baixo}, com uma frequência máxima de $20 \, \pi \, rad/s$, dado parecer-nos o mais adequado de forma a atenuar o ruído e manter as características fundamentais do sinal. Apresenta-se em seguida o sinal original (azul), sobreposto com o sinal após a aplicação do ruído (verde), bem como o sinal com ruído com o filtro passa-baixo (vermelho). Como é possível notar, este passa-baixo apenas atenua o efeito do ruído aleatório, dada a aproximação da onda quadrada unitária segundo uma Série de Fourier utilizar componentes numa larga gama de frequências. Escolhemos $20 \, \pi \, rad/s$ como valor de corte, dada a amplitude dos coeficientes a partir deste ponto ser pequena.
+
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex3_2_1_plot.png}
+	\captionof{figure}{Original signal (unit square wave, $T_0 = 2 \, \pi$) (blue) overlapped by the noisy signal (green) and the Fourier Series Filtered Signal (dashed, red).}
+	\label{fig:ex3_2_1_plot}
+\end{center}
+
+\clearpage
+\noindent Apresenta-se de seguida o gráfico relativo aos coeficientes antes (azul) e depois (vermelho) de aplicar o filtro. Como é possível notar, a partir de $m = 20$, as componentes da Série de Fourier são nulas.
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex3_2_1_coeffs.png}
+	\captionof{figure}{Noisy signal Fourier Series coefficients (blue) overlapped by the filtered noisy signal Fourier Series coefficients (red).}
+	\label{fig:ex3_2_1_coeffs}
+\end{center}
+
+\subsubsection{Exercise 3.2.2}
+\noindent Para uma onda em dente de serra de período $2 \pi$, sobre a qual é aplicada ruído aleatório na gama $\omega \in [4, 6] \, rad/s$, escolhemos um filtro \textbf{passa-baixo}, com uma frequência máxima de $4 \, rad/s$, dado parecer-nos o mais adequado de forma a atenuar o ruído e manter as características fundamentais do sinal (neste caso, o limite inferior do intervalo de ruído). Apresenta-se em seguida o sinal original (azul), sobreposto com o sinal após a aplicação do ruído (verde), bem como o sinal com ruído com o filtro passa-baixo (vermelho).
+
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex3_2_2_plot.png}
+	\captionof{figure}{Original signal (sawtooth wave, $T_0 = 2 \, \pi$) (blue) overlapped by the noisy signal (green) and the Fourier Series Filtered Signal (dashed, red).}
+	\label{fig:ex3_2_2_plot}
+\end{center}
+
+\clearpage
+\noindent Apresenta-se de seguida o gráfico relativo aos coeficientes antes (azul) e depois (vermelho) de aplicar o filtro. Como é possível notar, a partir de $m = 4$, as componentes da Série de Fourier são nulas.
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex3_2_2_coeffs.png}
+	\captionof{figure}{Noisy signal Fourier Series coefficients (blue) overlapped by the filtered noisy signal Fourier Series coefficients (red).}
+	\label{fig:ex3_2_2_coeffs}
+\end{center}
+
+\subsubsection{Exercise 3.2.3}
+\noindent Para um sinal com a expressão (\ref{eq:ex_2_2_3}), de período $\frac{2}{3}$, sobre a qual é aplicada ruído aleatório na gama $\omega \in [20 \, \pi, 30 \, \pi] \, rad/s$, escolhemos um filtro \textbf{rejeita-banda}, na banda correspondente a $m \in [6, 10]$, i.e., $\omega \in [18 \, \pi, 30 \, \pi] rad/s$, o que remove por completo o ruído aplicado. Isto porque, após a análise dos coeficientes da Série de Fourier para o sinal (ver imagem \ref{fig:ex2_2_3_cm_tm}), a remoção dos coeficientes nessa gama não afecta o sinal original. Apresenta-se em seguida o sinal original (azul), sobreposto com o sinal após a aplicação do ruído (verde), bem como o sinal com ruído com o filtro passa-baixo (vermelho).
+
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex3_2_3_plot.png}
+	\captionof{figure}{Original signal ($x(t) = cos(0) + cos\left(33 \, \pi \, t + \frac{7 \pi}{4}\right) + cos\left(9 \, \pi \, t + \frac{\pi}{4}\right)$, $T_0 = \frac{2}{3}$) (blue) overlapped by the noisy signal (green) and the Fourier Series Filtered Signal (dashed, red).}
+	\label{fig:ex3_2_3_plot}
+\end{center}
+
+\clearpage
+\noindent Apresenta-se de seguida o gráfico relativo aos coeficientes antes (azul) e depois (vermelho) de aplicar o filtro. Como é possível notar, os coeficientes correspondentes a $m \in [6, 10]$ são tornados nulos.
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex3_2_3_coeffs.png}
+	\captionof{figure}{Noisy signal Fourier Series coefficients (blue) overlapped by the filtered noisy signal Fourier Series coefficients (red).}
+	\label{fig:ex3_2_3_coeffs}
+\end{center}
+
+\subsubsection{Exercise 3.2.4}
+\noindent Para um sinal com a expressão (\ref{eq:ex_2_2_4}), de período $\pi$, sobre a qual é aplicada ruído de expressão $r(t) = 0.2 \, cos^2(9 \, t)$, escolhemos um filtro \textbf{passa-banda}, na banda correspondente a $m \in [1, 5]$, i.e., $\omega \in [2 \, \pi, 10 \, \pi] rad/s$, o que remove por completo o ruído aplicado, para além da componente contínua. Isto porque, após a análise dos coeficientes da Série de Fourier para o sinal (ver imagem \ref{fig:ex2_2_4_cm_tm}), esta inclui apenas os coeficientes relativos ao sinal. Dado que a componente contínua tinha como coeficiente $2$ e como fase $-\pi$, o sinal após a aplicação do filtro apresenta-se deslocado por $2$ unidades do sinal original. Apresenta-se em seguida o sinal original (azul), sobreposto com o sinal após a aplicação do ruído (verde), bem como o sinal com ruído com o filtro passa-baixo (vermelho).
+
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex3_2_4_plot.png}
+	\captionof{figure}{Original signal ($x(t) = 2 \, cos(\pi) + 4 \, cos\left(4 \, t + \frac{\pi}{3}\right) + 2 \, cos\left(10 \, t + \frac{\pi}{2}\right)$, $T_0 = \pi$) (blue) overlapped by the noisy signal (green) and the Fourier Series Filtered Signal (dashed, red).}
+	\label{fig:ex3_2_4_plot}
+\end{center}
+
+\noindent Apresenta-se de seguida o gráfico relativo aos coeficientes antes (azul) e depois (vermelho) de aplicar o filtro. Como é possível notar, apenas os coeficientes correspondentes a $m \in [1, 5]$ são não-nulos.
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex3_2_4_coeffs.png}
+	\captionof{figure}{Noisy signal Fourier Series coefficients (blue) overlapped by the filtered noisy signal Fourier Series coefficients (red).}
+	\label{fig:ex3_2_4_coeffs}
+\end{center}
+
+\clearpage
 \section{Exercise 4}
-\noindent TODO %%% TODO
+\subsection{Exercise 4.1}
+\noindent Dado o sinal
+\begin{equation}
+	x(t) = 2 e^{-0.7 \, t} \, sin(4 \, \pi \, t)
+\end{equation}
 
+\noindent pretende-se obter a sua Transformada de Fourier segundo a fórmula da Transformada de Fourier.
+\begin{eqnarray}
+	X(\omega) & = & \int_{-\infty}^{\infty} \, x(t) \, e ^{-j \, \omega \, t} \mathrm{d}t \\
+	& = & \int_{-\infty}^{\infty} \, 2 e^{-0.7 t} \, sin(4 \pi t) \, e^{-j \, \omega \, t} \mathrm{d}t
+\end{eqnarray}
+
+\noindent Em seguida apresenta-se o resultado para $\omega \in [-30 \, \pi, 30 \, \pi] \, rad/s$, com um \emph{step} $ = \frac{\pi}{6}$, em módulo e fase.
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex_4_1_mod.png}
+	\captionof{figure}{Signal's Fourier Transform (module), $\omega \in [-30 \, \pi, 30 \, \pi] \, rad/s$, \texttt{step} $ = \pi/6$.}
+	\label{fig:ex_4_1_module}
+\end{center}
+
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex_4_1_pha.png}
+	\captionof{figure}{Signal's Fourier Transform (phase), $\omega \in [-30 \, \pi, 30 \, \pi] \, rad/s$, \texttt{step} $ = \pi/6$.}
+	\label{fig:ex_4_1_phase}
+\end{center}
+
+\subsection{Exercice 4.2}
+\noindent Aplicando a Inversa da Transformada de Fourier
+\begin{equation}
+	x(t) = \dfrac{1}{2\pi} \int_{-\infty}^{\infty} X (\omega) e^{jwd} \mathrm{d} \omega
+\end{equation}
+
+\noindent deverá ser possível obter o sinal original, a partir da transformação obtida na alínea anterior. Em seguida apresenta-se o resultado da aplicação da função da Inversa da Transformada de Fourier (red), sobreposto pelo sinal original (azul).
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex_4_2.png}
+	\captionof{figure}{Original signal, $x(t)$, (blue) overlapped by the Inverse Fourier Transform applied to $x(t) \, e^{-j \, \omega \, t}$ (red).}
+	\label{fig:ex_4_2}
+\end{center}
+
+\noindent Como é possível verificar, os sinais sobrepõem-se.
+
+\subsection{Exercise 4.3}
+\noindent Não efectuado por falta de tempo.
+
+\clearpage
 \section{Attachments}
 \subsection{Trigonometric identities}
 \label{subsec:trigident}
-As simplicações das alíneas \emph{\nameref{subsubsec:ex_2_2_3}} e \emph{\nameref{subsubsec:ex_2_2_4}} fazem uso das seguintes igualdades:
+\noindent As simplicações das alíneas \emph{\nameref{subsubsec:ex_2_2_3}} e \emph{\nameref{subsubsec:ex_2_2_4}} fazem uso das seguintes igualdades:
 \begin{equation}
 sin(\theta) \, cos(\varphi) = \frac{cos(\theta - \varphi) + cos(\theta + \varphi)}{2}
 \end{equation}

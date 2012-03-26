@@ -77,3 +77,6 @@ m_max = 100;
 m_max_i = [0, 1, 3, 5, 10, 50];
 
 ex214_216(t_, x_t, T0, m_max, m_max_i, 'Ex. 2.2.4: ');
+
+%% Ex. 2.4
+% TODO % % TODO % % TODO %
