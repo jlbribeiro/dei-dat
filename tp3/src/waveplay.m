@@ -1,5 +1,5 @@
-function wavplay(signal, Fs)
-	wavwrite(signal, Fs, 'temp_wavplay.wav');
-    !aplay -q temp_wavplay.wav
-    !rm -rf temp_wavplay.wav
+function waveplay(signal, Fs)
+	wavwrite(signal, Fs, '/tmp/temp_waveplay.wav');
+	!aplay -q /tmp/temp_waveplay.wav
+	!rm -rf /tmp/temp_waveplay.wav
 end
