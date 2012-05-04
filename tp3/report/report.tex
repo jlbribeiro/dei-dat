@@ -66,6 +66,16 @@
 	\omega_0 = mdc \, (0, 9 \, \pi, 30 \, \pi, 33 \, \pi) = 3 \, \pi
 \end{equation}
 
+\noindent Obtêm-se assim também os valores de
+\begin{equation}
+	f_0 = \frac{\omega_0}{2 \, \pi} = \frac{3}{2} Hz
+\end{equation}
+
+\noindent e
+\begin{equation}
+	T_0 = \frac{1}{f_0} = \frac{2}{3} s
+\end{equation}
+
 \noindent A frequência angular máxima ($\omega_{max}$) é a máxima de todas as frequências angulares, pelo que
 \begin{equation}
 	\omega_{max} = max \, (0, 9 \, \pi, 30 \, \pi, 33 \, \pi) = 33 \, \pi
@@ -106,6 +116,111 @@
 	= & cos(\pi) + 2 \, cos\left( \frac{9 \, \pi}{36} \, n + \frac{3 \, \pi}{4} \right) + 3 \, cos\left( \frac{30 \, \pi}{36} \, n + \frac{3 \, \pi}{2} \right) + 2 \, cos\left( \frac{33 \, \pi}{36} \, n + \frac{5 \, \pi}{4} \right) \\
 	= & cos(\pi) + 2 \, cos\left( \frac{\pi}{4} \, n + \frac{3 \, \pi}{4} \right) + 3 \, cos\left( \frac{5 \, \pi}{6} \, n + \frac{3 \, \pi}{2} \right) + 2 \, cos\left( \frac{11 \, \pi}{12} \, n + \frac{5 \, \pi}{4} \right)
 \end{eqnarray}
+
+\subsection{Exercise 1.2}
+\noindent Abaixo apresenta-se o sinal de tempo contínuo (i.e., com 5000 pontos) a azul, sobreposto pelo sinal amostrado, a pontos vermelhos.
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex_1_2.png}
+	\captionof{figure}{Original signal (x(t), blue) overlapped with the discrete signal (x[n], red)}
+	\label{fig:ex_1_2}
+\end{center}
+
+\noindent Como é possível verificar, todos os pontos vermelhos assentam sobre a curva azul do sinal original.
+
+\subsection{Exercise 1.3}
+\noindent Após a utilização das funções \texttt{fft} e \texttt{fftshift}, obtiveram-se os gráficos que de seguida se apresentam (em cima a representação em módulo do resultado da DFT, em baixo a representação em fase).
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex_1_3.png}
+	\captionof{figure}{DFT representation (above: module; below: phase).}
+	\label{fig:ex_1_3}
+\end{center}
+
+\subsection{Exercise 1.4}
+\label{subsec:ex_1_4}
+\noindent A relação entre os coeficientes da Série de Fourier Complexa com a Transformada Discreta de Fourier é dada por
+\begin{equation}
+	c_m = \frac{1}{N} \, X[m]
+\end{equation}
+
+\noindent onde $X$ é o resultado da DFT e N dado por
+\begin{equation}
+	N = \frac{T_0}{T_s} = \frac{\frac{2}{3}}{\frac{1}{36}} = 24
+\end{equation}
+
+\noindent Como tal, é possível obter os coeficientes da Série de Fourier Complexa dividindo o resultado por $N$, o que nos dá o resultado abaixo apresentado (em cima a representação em módulo dos coeficientes, em baixo a representação em fase).
+
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex_1_4.png}
+	\captionof{figure}{Complex Fourier Series coefficients (above: module; below: phase).}
+	\label{fig:ex_1_4}
+\end{center}
+
+\subsection{Exercise 1.5}
+\label{subsec:ex_1_5}
+\noindent A partir dos coeficientes da Série de Fourier Complexa é possível obter os coeficientes da Série de Fourier Trigonométrica, com a sua relação dada segundo
+\begin{equation}
+	c_m = \left\{
+	\begin{array}{lr}
+		C_0 \, cos(\theta_0) & m = 0 \\
+		\, & \, \\
+		\frac{C_m}{2} \, (cos~\theta_m + sgn(m)~j~sin~\theta_m), & m \neq 0
+	\end{array}
+	\right.
+	\label{eq:complex_trig_rel}
+\end{equation}
+
+\noindent Como tal, e dado que
+\begin{equation}
+	|cos~\theta_m \pm~j~sin~\theta_m| = 1
+\end{equation}
+
+\noindent o valor em módulo de $C_m$ pode ser obtido multiplicando por 2 o valor em módulo de $c_m$, com a excepção do valor de $m = 0$.\\
+Como o número de coeficientes do lado positivo pode ser menor que o número de coeficientes do lado negativo (consoante a paridade de $N$), optámos por utilizar os Coeficientes da Série de Fourier Complexa do lado negativo para calcular os Coeficientes da Série de Fourier Trigonométrica; como tal, o valor de $\theta_m$ é obtido a partir do conjugado\footnote{Isto porque, segundo a equação \ref{eq:complex_trig_rel}, os $c_m$ correspondentes a $m$ positivo são os valores conjugados dos valores para $m$ negativo.} do valor do ângulo do coeficiente complexo. Apresenta-se agora a representação gráfica (em cima, $C_m$, em baixo, $\theta_m$).
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex_1_5.png}
+	\captionof{figure}{Trigonometric Fourier Series parameters ($C_m$ (coefficients, above) and $\theta_m$ (phase, below).}
+	\label{fig:ex_1_5}
+\end{center}
+
+\subsection{Exercise 1.6}
+\noindent Reconstruindo o sinal utilizando a fórmula da Série de Fourier Trigonométrica, isto é,
+\begin{equation}
+	x(t) = \sum_{i} C_{i} \, cos(\omega_{i} t + \theta_{i})
+\end{equation}
+
+\noindent obtivemos o gráfico que abaixo se apresenta (a azul, o sinal original, a vermelho, a reconstrução do sinal).
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex_1_6.png}
+	\captionof{figure}{Original signal ($x(t)$, blue) overlapped with the reconstructed signal through the Trigonometric Fourier Series ($x[n]$, red)}
+	\label{fig:ex_1_6}
+\end{center}
+
+\clearpage
+\section{Exercise 2}
+\subsection{Exercise 2.1}
+\noindent Após a utilização das funções \texttt{fft} e \texttt{fftshift}, obtém-se (a partir do módulo da DFT) o espectro do sinal.
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex_2_1.png}
+	\captionof{figure}{Signal's frequency magnitude (Discrete Fourier Transform).}
+	\label{fig:ex_2_1}
+\end{center}
+
+\subsection{Exercise 2.2}
+\noindent A frequência de amplitude máxima é 374.48Hz, com uma amplitude de 0.01. Esta amplitude foi calculada utilizando a relação entre a DFT e a Série de Fourier Trigonométrica, mencionada em \emph{\nameref{subsec:ex_1_4}} e \emph{\nameref{subsec:ex_1_5}}.
+
+\subsection{Exercise 2.3}
+\noindent Após o cálculo dos indíces correspondentes à gama a modificar (bem como 10\% da amplitude máxima do espectro), é gerado ruído em amplitude e fase e adicionado a esses mesmos índices. Pela mesma razão que em \emph{\nameref{subsec:ex_1_5}}, existe o cuidado de colocar o conjugado do ruído nos índices do lado negativo. Apresenta-se agora o espectro do sinal original (a azul) sobreposto com o espectro do sinal após a adição de ruído (a vermelho). É possível observar, consequentemente, a gama (a vermelho) onde foi adicionado.
+\begin{center}
+	\includegraphics[width=0.70\textwidth]{images/ex_2_3_lowpass.png}
+	\captionof{figure}{Original signal (blue) overlapped with the noisy signal (uniform noise on the [8500Hz, 9500Hz] range, red).}
+	\label{fig:ex_2_1}
+\end{center}
+
+\subsection{Exercise 2.4}
+\noindent Após a aplicação de \texttt{ifft} (e \texttt{ifftshift}), o som obtido possui um ruído agudo de fundo (semelhante a "grilos").
+
+\subsection{Exercise 2.5}
+\noindent TODO
 
 \clearpage
 \section{Attachments}

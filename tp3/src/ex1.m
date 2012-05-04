@@ -1,3 +1,6 @@
+%% Initial vars setup
+demo_mode = true;
+
 %% Ex. 1
 % G = 25;
 % x(t)	= -1 + 3 * sin(30 * pi * t) + 4 * mod(G, 2) * sin(12 * pi * t - pi / 4) * cos(21 * pi * t) + 4 * mod(G + 1, 2) * cos(20 * pi * t + pi / 4) * sin(45 * pi * t)
@@ -49,6 +52,9 @@ titl_ = 'Ex. 1.2: Original signal (x(t), blue) overlapped with the discrete sign
 figure('Name', titl_);
 plot(t_t, x_t, 'b', t_n * Ts, x_n, 'r*');
 title(titl_);
+if exist('demo_mode', 'var') && demo_mode
+	fprintf('Press [ENTER] to continue.\n'); pause();
+end;
 
 %% Ex. 1.3.
 t_n = 0:(N-1);
@@ -60,7 +66,7 @@ X_n = fftshift(fft(x_n));
 %	omega = (-(N / 2) : 1 : N / 2 - 1) * Ws / N
 % else
 %	omega = (-((N-1) / 2) : 1 : ((N-1) / 2)) * Ws / N
-omega = ((-(N-mod(N, 2)) / 2) : 1 : ((N-mod(N, 2)) / 2 - (1 - mod(N, 2)))) * Ws / N;
+omega = ((-(N-mod(N, 2)) / 2) : 1 : ((N - mod(N, 2)) / 2 - mod(N + 1, 2))) * Ws / N;
 
 titl_ = '%sDFT representation (%s)';
 figure('Name', sprintf(titl_, 'Ex. 1.3: ', 'module and phase'));
@@ -72,6 +78,9 @@ title(sprintf(titl_, '', 'module'));
 subplot(2,1,2);
 stem(omega, angle(X_n));
 title(sprintf(titl_, '', 'phase'));
+if exist('demo_mode', 'var') && demo_mode
+	fprintf('Press [ENTER] to continue.\n'); pause();
+end;
 
 %% Ex. 1.4.
 % Since
@@ -91,6 +100,9 @@ title(sprintf(titl_, '', 'module'));
 subplot(2,1,2);
 stem(omega, angle(c_m));
 title(sprintf(titl_, '', 'phase'));
+if exist('demo_mode', 'var') && demo_mode
+	fprintf('Press [ENTER] to continue.\n'); pause();
+end;
 
 %% Ex. 1.5.
 % if mod(N, 2) == 0
@@ -123,6 +135,9 @@ title(sprintf(titl_, '', 'C_m (coefficients)'));
 subplot(2,1,2);
 stem(omega, Theta_m);
 title(sprintf(titl_, '',  '\theta_m (phase)'));
+if exist('demo_mode', 'var') && demo_mode
+	fprintf('Press [ENTER] to continue.\n'); pause();
+end;
 
 %% Ex. 1.6.
 x_t_rec = zeros(1, N_POINTS);
@@ -132,7 +147,7 @@ for i = 1:length(C_m)
 	x_t_rec = x_t_rec + C_m(i) * cos((i-1) * W0 * t_t + Theta_m(i));
 end;
 
-titl_ = 'Ex. 1.6: Original signal (x(t), blue) overlapped with the reconstructed signal through the Fourier Series (x[n], red)';
+titl_ = 'Ex. 1.6: Original signal (x(t), blue) overlapped with the reconstructed signal through the Trigonometric Fourier Series (x[n], red)';
 figure('Name', titl_);
 plot(t_t, x_t, 'b', t_t, x_t_rec, 'r.');
 title(titl_);
