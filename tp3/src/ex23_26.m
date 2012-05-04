@@ -92,7 +92,7 @@ function ex23_26(Fs, N, X, Fstep, f, F0_ind, Fmax_amp, Fnoise_range, F_filter, f
 			filter_range = sprintf('[%dHz, %dHz]', Fmin_filter, Fmax_filter);
 		end;
 
-		titl_ = sprintf('Ex. 2.5: Z-plane representation of a %d order %s Buttworth filter, on the %s range', filter_order, filter_type_str, filter_range);
+		titl_ = sprintf('Ex. 2.5: Z-plane representation of a %d order %s Butterworth filter, on the %s range', filter_order, filter_type_str, filter_range);
 		figure('Name', titl_);
 		zplane(b, a);
 		title(titl_);

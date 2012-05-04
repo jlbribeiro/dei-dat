@@ -51,7 +51,7 @@ if exist('demo_mode', 'var') && demo_mode
 	fprintf('Press [ENTER] to continue.\n'); pause();
 end;
 
-%% Ex. 3.5 - ex. 3.8.
+%% Ex. 3.4 - ex. 3.8.
 default_filters = menu('Mode', 'User input', 'Default filters') - 1;
 
 if default_filters

@@ -1,6 +1,5 @@
 function ex35_38(map, width, height, x_axis, y_axis, X, DC_x_ind, DC_y_ind, choice, Flimit)
 	%% Initial vars setup
-	mask_scale_factor = 50;
 	highpass_scale_factor = 10; % allows better contrast on Highpass Filters
 
 	mask = zeros(size(X));
@@ -32,9 +31,9 @@ function ex35_38(map, width, height, x_axis, y_axis, X, DC_x_ind, DC_y_ind, choi
 		mask = 1 - mask;
 	end
 
-	titl_ = sprintf('Ex. 3.5: %s Filter with f_c = %d (%d scale factor)', filter_str, Flimit, mask_scale_factor);
+	titl_ = sprintf('Ex. 3.5: %s Filter with f_c = %d', filter_str, Flimit);
 	figure('Name', titl_);
-	mesh(x_axis, y_axis, mask * mask_scale_factor);
+	mesh(x_axis, y_axis, mask);
 	xlabel('Width');
 	ylabel('Height');
 	axis([x_axis(1) x_axis(end) y_axis(1) y_axis(end)]);
