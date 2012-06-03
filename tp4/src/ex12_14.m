@@ -67,7 +67,7 @@ function ex12_14(x, Fs, median_n)
 
 	titl_ = sprintf('Ex. 1.2/1.3: Fundamental frequencies temporal succession (%d median, %.2fms sliding window, %.2fms overlap)', median_n + 1, window_time_size * 1e3, window_time_overlap * 1e3);
 	figure('Name', titl_);
-	temporal_succession_x_axis = 0 : window_step : length(x_filtered)
+	temporal_succession_x_axis = 0 : window_step : length(x_filtered) - 1;
 	stairs(temporal_succession_x_axis, f_window(f_fund_ind_per_window));
 	title(titl_);
 	fprintf('Press [ENTER] to continue.\n'); pause();
