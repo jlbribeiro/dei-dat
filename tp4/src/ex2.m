@@ -30,8 +30,19 @@ if exist('demo_mode', 'var') && demo_mode
 	fprintf('Press [ENTER] to continue.\n'); pause();
 end;
 
+t = linspace(0, length(x) / Fs, length(x));
+
 if size(x, 2) == 2
 	x = (x(:,1) + x(:,2)) / 2;
+end;
+
+titl_ = sprintf('Ex. 2.1: Signal''s representation of file %s', chosen_signal.filename);
+figure('Name', titl_);
+plot(t, x);
+title(titl_);
+
+if exist('demo_mode', 'var') && demo_mode
+	fprintf('Press [ENTER] to continue.\n'); pause();
 end;
 
 % N = length(x);
@@ -49,7 +60,8 @@ figure('Name', titl_);
 stem(f, abs(X));
 title(titl_);
 if exist('demo_mode', 'var') && demo_mode
-	fprintf('Press [ENTER] to continue.\n'); pause();
+
+    fprintf('Press [ENTER] to continue.\n'); pause();
 end;
 
 %% Ex. 2.2.

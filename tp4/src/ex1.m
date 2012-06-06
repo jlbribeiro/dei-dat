@@ -5,6 +5,19 @@ demo_mode = true;
 %% Ex. 1.1.
 [x, Fs, ~] = wavread('files/saxriff.wav');
 waveplay(x, Fs);
+if exist('demo_mode', 'var') && demo_mode
+	fprintf('Press [ENTER] to continue.\n'); pause();
+end;
+
+t = linspace(0, length(x) / Fs, length(x));
+
+titl_ = 'Ex. 1.1: Signal''s representation';
+figure('Name', titl_);
+plot(t, x);
+title(titl_);
+if exist('demo_mode', 'var') && demo_mode
+	fprintf('Press [ENTER] to continue.\n'); pause();
+end;
 
 % N = length(x);
 
