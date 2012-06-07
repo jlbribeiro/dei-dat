@@ -33,7 +33,7 @@ for dim = 1 : 3,
 	end;
 end;
 
-% 'Dirty' generalization for mod(log2(size(img)), 2) == zeros(1, 2)
+% 'Dirty' generalization
 matrix = ca_max_map;
 for detail_level = MAX_LEVEL : -1 : 1
 	matrix = [matrix cell2mat(cd_map(detail_level, 1)); cell2mat(cd_map(detail_level, 2)) cell2mat(cd_map(detail_level, 3))];

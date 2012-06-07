@@ -53,13 +53,15 @@
 \indent \indent Apresenta-se em seguida a representação gráfica do sinal, bem como da magnitude do espectro em função da frequência.
 \begin{center}
 	\includegraphics[width=0.65\textwidth]{images/ex_1_1_sign.png}
-	\captionof{figure}{Signal''s representation}
+	\captionof{figure}{Signal's representation}
 \end{center}
 
 \begin{center}
 	\includegraphics[width=0.65\textwidth]{images/ex_1_1_mag.png}
 	\captionof{figure}{Signal's frequency magnitude (Fast Fourier Transform)}
 \end{center}
+
+\clearpage
 
 \subsection{Exercise 1.2 - 1.4}
 \indent \indent Representa-se a janela de \emph{Hamming} utilizada em função frequência.
@@ -111,7 +113,9 @@ Utilizando a função \emph{stairs} para representar a sequência de frequência
 \end{center}
 
 \subsection{Exercise 1.5}
-\indent \indent Nota-se que os sinais sintetizadas possuem as principais notas do sinal original, parecendo que este foi ``discretizado''. Entre os vários sinais sintetizados, é possível verificar que os sons com maior mediana vão perdendo intensidade nalguns picos de frequência altas, ficando o sinal mais suave em termos de volume e percepção.
+\indent \indent Nota-se que os sinais sintetizadas possuem as principais notas do sinal original, parecendo que este foi ``discretizado'. Entre os vários sinais sintetizados, é possível verificar que os sons com maior mediana vão perdendo intensidade nalguns picos de frequência altas, ficando o sinal mais suave em termos de volume e percepção.
+
+\clearpage
 
 \section{Exercise 2}
 \subsection{Exercise 2.1 - 2.4}
@@ -120,11 +124,11 @@ Utilizando a função \emph{stairs} para representar a sequência de frequência
 \subsubsection{\texttt{escala.wav}}
 \begin{center}
 	\includegraphics[width=0.65\textwidth]{images/ex_2_1_escala_sign.png}
-	\captionof{figure}{Signal''s representation of file escala.wav.}
+	\captionof{figure}{Signal's representation of file escala.wav.}
 \end{center}
 \begin{center}
 	\includegraphics[width=0.65\textwidth]{images/ex_2_1_escala_mag.png}
-	\captionof{figure}{Signal''s frequency magnitude (Fast Fourier Transform).}
+	\captionof{figure}{Signal's frequency magnitude (Fast Fourier Transform).}
 \end{center}
 
 \indent \indent Considerámos para este sinal uma janela de duração 150ms, com sobreposição de 4.69ms. Como tal, obtemos uma resolução em frequência de 6.67Hz. Apresenta-se em seguida a sequência temporal de notas obtida (graficamente e textualmente).
@@ -138,11 +142,11 @@ Do Re Mi Fa Sol La Si Do Do
 \subsubsection{\texttt{piano.wav}}
 \begin{center}
 	\includegraphics[width=0.65\textwidth]{images/ex_2_1_piano_sign.png}
-	\captionof{figure}{Signal''s representation of file piano.wav.}
+	\captionof{figure}{Signal's representation of file piano.wav.}
 \end{center}
 \begin{center}
 	\includegraphics[width=0.65\textwidth]{images/ex_2_1_piano_mag.png}
-	\captionof{figure}{Signal''s frequency magnitude (Fast Fourier Transform).}
+	\captionof{figure}{Signal's frequency magnitude (Fast Fourier Transform).}
 \end{center}
 
 \indent \indent Considerámos para este sinal uma janela de duração 180ms, com sobreposição de 5.62ms. Como tal, obtemos uma resolução em frequência de 5.56Hz. Apresenta-se em seguida a sequência temporal de notas obtida (graficamente e textualmente).
@@ -156,11 +160,11 @@ Do Re Mi Fa Sol La Si Do Do
 \subsubsection{\texttt{flauta.wav}}
 \begin{center}
 	\includegraphics[width=0.65\textwidth]{images/ex_2_1_flauta_sign.png}
-	\captionof{figure}{Signal''s representation of file flauta.wav.}
+	\captionof{figure}{Signal's representation of file flauta.wav.}
 \end{center}
 \begin{center}
 	\includegraphics[width=0.65\textwidth]{images/ex_2_1_flauta_mag.png}
-	\captionof{figure}{Signal''s frequency magnitude (Fast Fourier Transform).}
+	\captionof{figure}{Signal's frequency magnitude (Fast Fourier Transform).}
 \end{center}
 
 \indent \indent Considerámos para este sinal uma janela de duração 50ms, com sobreposição de 1.56. Como tal, obtemos uma resolução em frequência de 20Hz. Apresenta-se em seguida a sequência temporal de notas obtida (graficamente e textualmente).
@@ -173,6 +177,8 @@ Do Re Mi Fa Sol La Si Do Do
 
 \subsection{Exercise 2.5}
 \indent \indent A janela escolhida é a mais importante escolha para a correcta identificação das notas, uma vez que essa decide a resolução em frequência obtida. Para os 2 primeiros sinais, a janela foi escolhida de acordo com a duração de cada nota. Dado que são sinais sintetizados com notas igualmente espaçadas (temporalmente), a janela é relativamente fácil de determinar. Num sinal real (`flauta.wav'), tal escolha torna-se num compromisso, e portanto mais `fine-tuned'.
+
+\clearpage
 
 \section{Exercise 3}
 \subsection{Exercise 3.1}
@@ -194,39 +200,43 @@ Do Re Mi Fa Sol La Si Do Do
 \end{center}
 
 \subsection{Exercise 3.4}
-\indent \indent Apresenta-se os coeficientes (de detalhe e aproximação) resultantes da decomposição do sinal com 4 níveis de resolução, utilizando a \emph{wavelet} `db3'.
+\indent \indent Apresenta-se os coeficientes (de detalhe e aproximação) resultantes da decomposição do sinal com 4 níveis de resolução, utilizando a \emph{wavelet} `db3', bem como o sinal resultante.
 \begin{center}
-	\includegraphics[width=0.85\textwidth]{images/ex_3_4.png}
+	\includegraphics[width=0.85\textwidth]{images/ex_3_4_coeffs.png}
+	\captionof{figure}{Representation of Approximation and Detail Coefficients of using wavelet db3.}
+\end{center}
+
+\begin{center}
+	\includegraphics[width=0.85\textwidth]{images/ex_3_4_sign.png}
 	\captionof{figure}{Representation of Approximation and Detail Coefficients of using wavelet db3.}
 \end{center}
 
 \subsection{Exercise 3.5}
-\indent \indent Apresenta-se os coeficientes (de detalhe e aproximação) resultantes da decomposição do sinal com 4 níveis de resolução, utilizando a \emph{wavelet} `sym2'.
+\indent \indent Apresenta-se os coeficientes (de detalhe e aproximação) resultantes da decomposição do sinal com 4 níveis de resolução, utilizando a \emph{wavelet} `sym2', bem como o sinal resultante.
 \begin{center}
-	\includegraphics[width=0.85\textwidth]{images/ex_3_5.png}
+	\includegraphics[width=0.85\textwidth]{images/ex_3_5_coeffs.png}
+	\captionof{figure}{Representation of Approximation and Detail Coefficients of using wavelet sym2.}
+\end{center}
+
+\begin{center}
+	\includegraphics[width=0.85\textwidth]{images/ex_3_5_sign.png}
 	\captionof{figure}{Representation of Approximation and Detail Coefficients of using wavelet sym2.}
 \end{center}
 
 \subsection{Exercise 3.6}
-\indent \indent Apresentam-se em seguida as reconstruções obtidas para as duas \emph{wavelets}, utilizando o coeficiente de aproximação de nível 4, juntamente com os coeficientes de detalhe dos 4 níveis, sobreposta pela reconstrução obtida utilizando a função \texttt{waverec}.
+\indent \indent Apresentam-se em seguida as reconstruções parciais obtidas para as duas \emph{wavelets}, utilizando o coeficiente de aproximação de nível 4, juntamente com os coeficientes de detalhe dos 4 níveis de forma sucessiva (4, 3, 2 e 1).
 
 \begin{center}
 	\includegraphics[width=0.85\textwidth]{images/ex_3_6_db3_rec.png}
-	\captionof{figure}{Original Signal, Reconstruction of Signal using waverec, Reconstruction of signal using wrcoef (wavelet family: db3).}
-\end{center}
-\begin{center}
-	\includegraphics[width=0.85\textwidth]{images/ex_3_6_db3_ep.png}
-	\captionof{figure}{Representation of Original Signal (black dot''s) overlapped with Reconstructed Signal wrcoef(blue dashed) and Reconstruted Signal waverec(red). (using wavelet: db3)}
+	\captionof{figure}{Incremental signal reconstruction with 4 levels of resolution (using wavelet `db3')}
 \end{center}
 
 \begin{center}
 	\includegraphics[width=0.85\textwidth]{images/ex_3_6_sym2_rec.png}
-	\captionof{figure}{Original Signal, Reconstruction of Signal using waverec, Reconstruction of signal using wrcoef (wavelet family: sym2).}
+	\captionof{figure}{Incremental signal reconstruction with 4 levels of resolution (using wavelet `sym2')}
 \end{center}
-\begin{center}
-	\includegraphics[width=0.85\textwidth]{images/ex_3_6_sym2_ep.png}
-	\captionof{figure}{Representation of Original Signal (black dot''s) overlapped with Reconstructed Signal wrcoef(blue dashed) and Reconstruted Signal waverec(red). (using wavelet: sym2)}
-\end{center}
+
+\clearpage
 
 \section{Exercise 4}
 \subsection{Exercise 4.1}
@@ -237,21 +247,21 @@ Do Re Mi Fa Sol La Si Do Do
 \end{center}
 
 \subsection{Exercise 4.2}
-\indent \indent Apresentamos a reconstrução da imagem obtida utilizando apenas o coeficiente de detalhe de nível 2, detalhe de nível 1 e todos.
+\indent \indent Apresentamos a reconstrução incremental da imagem, obtida utilizando apenas o coeficiente de detalhe de nível 2, sucessivamente acrescentando os níveis de detalhe (2 e 1).
 \begin{center}
 	\includegraphics[width=0.50\textwidth]{images/ex_4_2_original.png}
 	\captionof{figure}{Original Image}
 \end{center}
 \begin{center}
-	\includegraphics[width=0.50\textwidth]{images/ex_4_2_coef_l2.png}
+	\includegraphics[width=0.65\textwidth]{images/ex_4_2_a2.png}
+	\captionof{figure}{Image with approximation coefficients of level 2.}
+\end{center}
+\begin{center}
+	\includegraphics[width=0.65\textwidth]{images/ex_4_2_d2.png}
 	\captionof{figure}{Image with detail coefficients of level 2.}
 \end{center}
 \begin{center}
-	\includegraphics[width=0.50\textwidth]{images/ex_4_2_coef_l1.png}
-	\captionof{figure}{Image with detail coefficients of level 1.}
-\end{center}
-\begin{center}
-	\includegraphics[width=0.50\textwidth]{images/ex_4_2_all_coef.png}
-	\captionof{figure}{Image with detail coefficients of level 1 and 2 with approximation coefficient of level 2.}
+	\includegraphics[width=0.65\textwidth]{images/ex_4_2_d1.png}
+	\captionof{figure}{Image with detail coefficients of level 2 and 1, with approximation coefficient of level 2.}
 \end{center}
 \end{document}
