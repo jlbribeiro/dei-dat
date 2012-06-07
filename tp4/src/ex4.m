@@ -48,3 +48,25 @@ if exist('demo_mode', 'var') && demo_mode
     fprintf('Press [ENTER] to continue.\n'); pause();
 end;
 
+%% Ex. 4.2
+ca_max_rec = wrcoef2('a', C, S, wname, MAX_LEVEL);
+
+img_rec = ca_max_rec;
+
+titl_ = sprintf('Ex. 4.2. Representation of the partially reconstructed image, %d level approximation coefficients (using wavelet %s)', detail_level, wname);
+figure('Name', titl_);
+imshow(img_rec, map);
+title(titl_);
+
+str_partial = ' partially';
+dims = {'h', 'v', 'd'};
+for detail_level = MAX_LEVEL : -1 : 1,
+	for dim = 1:3
+		img_rec = img_rec + wrcoef2(char(dims(dim)), C, S, wname, detail_level);
+	end;
+
+	titl_ = sprintf('Ex. 4.2. Representation of the%s reconstructed image, with level %d detail coefficients (using wavelet %s)', str_partial, detail_level, wname);
+	figure('Name', titl_);
+	imshow(img_rec, map);
+	title(titl_);
+end;
