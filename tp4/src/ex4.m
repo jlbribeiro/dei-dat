@@ -53,7 +53,7 @@ ca_max_rec = wrcoef2('a', C, S, wname, MAX_LEVEL);
 
 img_rec = ca_max_rec;
 
-titl_ = sprintf('Ex. 4.2. Representation of the partially reconstructed image, %d level approximation coefficients (using wavelet %s)', detail_level, wname);
+titl_ = sprintf('Ex. 4.2. Representation of the partially reconstructed image, %d level approximation coefficients (using wavelet %s)', MAX_LEVEL, wname);
 figure('Name', titl_);
 imshow(img_rec, map);
 title(titl_);

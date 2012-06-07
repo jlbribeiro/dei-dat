@@ -1,3 +1,4 @@
+
 %% Ex. 3.
 % Initial Vars
 demo_mode = true;
